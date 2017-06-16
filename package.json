@@ -1,0 +1,23 @@
+{
+  "name": "form-cards",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-jsonschema-form": "^0.49.0",
+    "react-modal": "^2.0.0",
+    "react-redux": "^5.0.5",
+    "redux": "^3.6.0",
+    "semantic-ui": "^2.2.10"
+  },
+  "devDependencies": {
+    "react-scripts": "1.0.7"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

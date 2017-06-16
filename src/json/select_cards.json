@@ -1,0 +1,25 @@
+{
+  "cards": [
+    {
+      "icon_url": "images/quiz.png",
+      "name": "Quiz",
+      "elevator_pitch": "Quiz",
+      "description": "magni laudantium etaut ex doloribus",
+      "next_url": ""
+    },
+    {
+      "icon_url": "images/explainer.png",
+      "name": "Explainer",
+      "elevator_pitch": "Explainer",
+      "description": "magni laudantium etaut ex doloribus",
+      "next_url": ""
+    },
+    {
+      "icon_url": "images/quiz.png",
+      "name": "Howard Ullrich",
+      "elevator_pitch": "",
+      "description": "magni laudantium etaut ex doloribus",
+      "next_url": ""
+    }
+  ]
+}
