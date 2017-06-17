@@ -71,10 +71,42 @@ body {
   padding: 20px;
 }
 
+#form {
+  background-color: white;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+}
+
 #fill_form {
-  width: 40%;
+  width: 50%;
 }
 
 #view_form {
+  width: 50%;
+}
+
+#publish {
   width: 40%;
+}
+
+.margin_left_80 {
+  margin-left: -80%;
+}
+
+.margin_right_80 {
+  margin-right: -80%;
+}
+
+.margin_right_40 {
+  margin-right: -40%;
+}
+
+.margin_left_40 {
+  margin-left: -40%;
+}
+
+.margin_shift_left_40 {
+  margin-left: -40%;
+  margin-right: 40%;
 }

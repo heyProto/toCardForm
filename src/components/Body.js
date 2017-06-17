@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Select from './Select';
 import SelectMore from './SelectMore';
 import FillForm from './FillForm';
-import ViewForm from './ViewForm'
+import ViewForm from './ViewForm';
+import Publish from './Publish';
 
 class Body extends Component {
   constructor(props) {
@@ -14,7 +15,9 @@ class Body extends Component {
       showSelectMore: false,
       showFillForm: false,
       showViewForm: false,
-      formSchema: "json/form1.json"
+      showPublish: false,
+      formSchema: "json/form1.json",
+      formMarginClass: "margin_right_80"
     }
 
     this.handleSelectCardClick = this.handleSelectCardClick.bind(this);
@@ -37,21 +40,25 @@ class Body extends Component {
     steps[1].active = true;
     this.props.onStepChange(steps);
     this.setState({
-      showSelectMore: false,
       showFillForm: true,
       showViewForm: true,
       formSchemaUrl,
-      currentStep: 1
+      currentStep: 1,
+      formMarginClass: "margin_left_80",
     })
   }
 
   handlePublishClick(formData, event) {
-    console.log(formData);
+    this.setState({
+      showPublish: true,
+      formData,
+      bodyMarginClass: "margin_shift_left_40"
+    });
   }
 
   render() {
     return (
-      <div id="content_body">
+      <div id="content_body" className={this.state.bodyMarginClass ? this.state.bodyMarginClass: ""}>
         <Select active={this.state.currentStep === 0 ? true : false}
           onSelectCardClick={this.handleSelectCardClick}
         />
@@ -61,13 +68,18 @@ class Body extends Component {
           />
           : ''}
 
-        {this.state.showFillForm ?
-          <FillForm />
-          : ''}
+        <div id="form" className={this.state.formMarginClass}>
+          {this.state.showFillForm ?
+            <FillForm />
+            : ''}
 
-        {this.state.showViewForm ?
-          <ViewForm onPublishClick={this.handlePublishClick} />
-          : ''}
+          {this.state.showViewForm ?
+            <ViewForm onPublishClick={this.handlePublishClick} />
+            : ''}
+        </div>
+        {this.state.showPublish ?
+            <Publish formData={this.state.formData} />
+            : ''}
       </div>
     )
   }
