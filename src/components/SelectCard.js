@@ -7,7 +7,7 @@ class SelectCard extends Component {
 
   render() {
     return (
-      <div className="card">
+      <div className="card" onClick={this.props.onSelectCardClick}>
         <div className="content">
           <img className="left floated mini ui image" src={this.props.card.icon_url} />
           <div className="header">

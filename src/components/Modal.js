@@ -18,7 +18,7 @@ class Modal extends Component {
           icon: 'none',
           title: 'BUILD',
           description: 'The card',
-          completed: false
+          completed: false,
         },
         {
           icon: 'none',
@@ -26,17 +26,23 @@ class Modal extends Component {
           description: 'Send it away',
           completed: false
         }
-      ],
+      ]
+    };
 
-      completed: 2
-    }
+    this.handleStepChange = this.handleStepChange.bind(this);
+  }
+
+  handleStepChange(steps) {
+    this.setState({steps});
   }
 
   render() {
     return (
       <div className="modal">
         <Steps steps={this.state.steps} completed={this.state.completed} />
-        <Body />
+        <Body steps={this.state.steps}
+          onStepChange={this.handleStepChange}
+        />
       </div>
     )
   }

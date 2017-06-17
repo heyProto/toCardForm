@@ -13,6 +13,12 @@ class Select extends Component {
     this.handleSearchChange = this.handleSearchChange.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props !== nextProps) {
+      console.log(nextProps);
+    }
+  }
+
   handleSearchChange(e) {
     const query = e.target.value;
     if (query === "") {
@@ -27,7 +33,7 @@ class Select extends Component {
     });
   }
 
-  render() {
+  renderActive() {
     return (
       <div id="select">
         <form className="ui form" id="search_box">
@@ -38,11 +44,34 @@ class Select extends Component {
         </form>
         <div id="select_cards">
           <div className="ui cards">
-            {this.state.cards.map((card, i) => <SelectCard card={card} key={i} />)}
+            {this.state.cards.map(
+              (card, i) => <SelectCard card={card} key={i} onSelectCardClick={this.props.onSelectCardClick.bind(this, card)} />
+            )}
           </div>
         </div>
       </div>
     )
+  }
+
+  renderInactive() {
+    return (
+      <div id="select">
+        <button className="ui left labeled icon teal button" id="select_back">
+          <i className="left arrow icon"></i>Change Selection
+        </button>
+        <div id="select_cards">
+          <div className="ui cards">
+            {this.state.cards.map(
+              (card, i) => <SelectCard card={card} key={i} onSelectCardClick={this.props.onSelectCardClick.bind(this, card)} />
+            )}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  render() {
+    return (this.props.active ? this.renderActive() : this.renderInactive())
   }
 }
 
