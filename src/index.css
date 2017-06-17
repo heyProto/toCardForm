@@ -66,6 +66,10 @@ body {
   border-top: 1px solid #efefef !important;
 }
 
+#select .card:hover{
+  background: #fafafa;
+}
+
 .ui.cards{
   margin: 0px;
 }
