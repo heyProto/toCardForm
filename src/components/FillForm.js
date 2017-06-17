@@ -11,7 +11,7 @@ class FillForm extends Component {
   render() {
     return (
       <div id="fill_form">
-        
+        The form will be filled here.
       </div>
     )
   }

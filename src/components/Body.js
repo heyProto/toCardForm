@@ -19,6 +19,7 @@ class Body extends Component {
 
     this.handleSelectCardClick = this.handleSelectCardClick.bind(this);
     this.handleSelectMoreConfirm = this.handleSelectMoreConfirm.bind(this);
+    this.handlePublishClick = this.handlePublishClick.bind(this);
   }
 
   handleSelectCardClick(card, event) {
@@ -44,6 +45,10 @@ class Body extends Component {
     })
   }
 
+  handlePublishClick(formData, event) {
+    console.log(formData);
+  }
+
   render() {
     return (
       <div id="content_body">
@@ -61,7 +66,7 @@ class Body extends Component {
           : ''}
 
         {this.state.showViewForm ?
-          <ViewForm />
+          <ViewForm onPublishClick={this.handlePublishClick} />
           : ''}
       </div>
     )
