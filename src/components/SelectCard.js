@@ -13,11 +13,8 @@ class SelectCard extends Component {
           <div className="header">
             {this.props.card.name}
           </div>
-          <div className="meta">
-            {this.props.card.elevator_pitch}
-          </div>
           <div className="description">
-            {this.props.card.description}
+            {this.props.card.elevator_pitch}
           </div>
         </div>
       </div>

@@ -33,6 +33,7 @@ class SelectMore extends Component {
     return (
       <div id="select_more">
         <h1 className="ui header">{this.state.details.header}</h1>
+        <div>{this.props.card.description}</div>
         <br />
         <button className="ui green button"
           onClick={this.props.onSelectMoreConfirm.bind(this, this.props.card, this.state.details.formSchemaUrl)}>
