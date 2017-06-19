@@ -4,7 +4,7 @@ import SelectMore from './SelectMore';
 import FillForm from './FillForm';
 import ViewForm from './ViewForm';
 import Publish from './Publish';
-import constants from './Constants.js';
+// import constants from './Constants.js';
 import axios from 'axios';
 
 console.log(Select, "------Select-----")
@@ -34,11 +34,11 @@ class Body extends Component {
     // Add Select More View
     console.log(card, "----card------")
     var instance = axios.create({
-      baseURL: constants.baseURL
+      baseURL: window.baseURL
     });
-    instance.defaults.headers['Access-Token'] = constants.accessToken;
+    instance.defaults.headers['Access-Token'] = window.accessToken;
     instance.defaults.headers['Content-Type'] = 'application/json';
-    instance.get(`${constants.baseURL}/accounts/icfj/template_cards/${card.id}`, {
+    instance.get(`${window.baseURL}/accounts/icfj/template_cards/${card.id}`, {
       timeout: 5000
     }).then(response => {
       console.log(response, "response of card data")

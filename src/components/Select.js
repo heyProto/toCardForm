@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SelectCard from './SelectCard';
 // import cardData from './../json/select_cards.json'
 import axios from 'axios';
-import constants from './Constants.js';
+// import constants from './Constants.js';
 
 // console.log(cardData, "cardData")
 // const access_token = '8fd5708dbb755cfc4ca199d1ba68ddd46fab4331d509d72f';
@@ -22,11 +22,11 @@ class Select extends Component {
   componentDidMount() {
     // console.log(base_url, "base_url", access_token)
     var instance = axios.create({
-      baseURL: constants.baseURL
+      baseURL: window.baseURL
     });
-    instance.defaults.headers['Access-Token'] = constants.accessToken;
+    instance.defaults.headers['Access-Token'] = window.accessToken;
     instance.defaults.headers['Content-Type'] = 'application/json';
-    instance.get(`${constants.baseURL}/accounts/icfj/template_cards/`, {
+    instance.get(`${window.baseURL}/accounts/icfj/template_cards/`, {
       timeout: 5000
     }).then(response => {
       console.log(response, "response", this)
