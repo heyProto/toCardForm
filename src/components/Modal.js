@@ -19,12 +19,6 @@ class Modal extends Component {
           title: 'BUILD',
           description: 'The card',
           completed: false,
-        },
-        {
-          icon: 'none',
-          title: 'PUBLISH',
-          description: 'Send it away',
-          completed: false
         }
       ]
     };
