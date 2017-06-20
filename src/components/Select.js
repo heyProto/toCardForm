@@ -29,7 +29,7 @@ class Select extends Component {
     instance.get(`${window.baseURL}/accounts/icfj/template_cards/`, {
       timeout: 5000
     }).then(response => {
-      console.log(response, "response", this)
+      console.log(response.data)
       this.setState({
         cards: response.data.template_cards
       })
@@ -38,9 +38,8 @@ class Select extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // console.log("componentWillReceiveProps")
     if (this.props !== nextProps) {
-      console.log(nextProps);
+      console.log(nextProps,".....");
     }
   }
 
@@ -59,7 +58,6 @@ class Select extends Component {
   }
 
   renderActive() {
-    console.log(this.state.cards, "-----")
     return (
       <div id="select">
         <form className="ui form" id="search_box">

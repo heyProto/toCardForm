@@ -22,7 +22,8 @@ class Body extends Component {
       showPublish: false,
       cardId: 1,
       formSchema: "json/form1.json",
-      formMarginClass: "margin_right_80"
+      formMarginClass: "margin_right_80",
+      check: null
     }
 
     this.handleSelectCardClick = this.handleSelectCardClick.bind(this);
@@ -48,11 +49,11 @@ class Body extends Component {
       })
     })
   }
-
-  renderCard(card) {
+  renderCard = (card) => {
     console.log(card, "-------renderCard")
-    setTimeout(function(){
-      var x = eval(`new ${card.name}()`) ;
+    var self = this;
+    setTimeout(()=>{
+      var x = eval(`new ${card.name}()`);
       console.log(x, "xxxxxxxxxx")
       x.init({
         selector: document.querySelector('#fill_form'),
@@ -60,9 +61,11 @@ class Body extends Component {
         schema_url: card.files.schema_files.schema,
         configuration_url: card.files.configuration_sample, 
         configuration_schema_url: card.files.configuration_schema
-      })
+      });
+      console.log(this);
+      this.setState({check:x});
       x.renderEdit();
-    }, 2000)
+    }, 2000);
   }
 
   handleSelectMoreConfirm(card, formSchemaUrl, event) {
@@ -71,7 +74,6 @@ class Body extends Component {
     document.body.appendChild(js_script);
     js_script.setAttribute('onload', this.renderCard(card));
     js_script.setAttribute('src', card.files.js);
-
     var css_script = document.createElement('link');
     css_script.rel = 'stylesheet';
     css_script.href = card.files.css;
@@ -111,13 +113,16 @@ class Body extends Component {
   }
 
   render() {
+  if(this.state.check !== null){
+    console.log(this.state.check);
+  }
     return (
       <div id="content_body" className={this.state.bodyMarginClass ? this.state.bodyMarginClass: ""}>
         <Select active={this.state.currentStep === 0 ? true : false}
           onSelectCardClick={this.handleSelectCardClick}/>
         {this.state.showSelectMore ?
           <SelectMore card={this.state.currentCard}
-            onSelectMoreConfirm={this.handleSelectMoreConfirm}/>
+            onSelectMoreConfirm={this.handleSelectMoreConfirm} cardData = {this.state.check}/>
           : ''}
 
         <div id="form" className={this.state.formMarginClass}>
