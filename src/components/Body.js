@@ -62,6 +62,7 @@ class Body extends Component {
         configuration_schema_url: card.files.configuration_schema
       })
       x.renderEdit();
+      x.getData();
     }, 2000)
   }
 
