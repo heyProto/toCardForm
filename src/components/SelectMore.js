@@ -22,6 +22,7 @@ class SelectMore extends Component {
   getJsonData(url) {
     axios.get(url)
       .then((response) => {
+        console.log(response.data,"...");
         this.setState({
           details: response.data
         });
@@ -30,6 +31,9 @@ class SelectMore extends Component {
   }
 
   render() {
+    if(this.props.cardData !== null ){
+      // console.log(this.props.cardData);
+    }
     return (
       <div id="select_more">
         <h1 className="ui header">{this.state.details.header}</h1>

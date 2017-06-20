@@ -7,7 +7,7 @@ import Publish from './Publish';
 // import constants from './Constants.js';
 import axios from 'axios';
 
-console.log(Select, "------Select-----")
+// console.log(Select, "------Select-----")
 
 class Body extends Component {
   constructor(props) {
@@ -22,7 +22,8 @@ class Body extends Component {
       showPublish: false,
       cardId: 1,
       formSchema: "json/form1.json",
-      formMarginClass: "margin_right_80"
+      formMarginClass: "margin_right_80",
+      protoGraphInstance: null
     }
 
     this.handleSelectCardClick = this.handleSelectCardClick.bind(this);
@@ -44,15 +45,19 @@ class Body extends Component {
       console.log(response, "response of card data")
       this.setState({
         showSelectMore: true,
-        currentCard: response.data.template_card
+        currentCard: response.data.template_card,
+        accountID: card.account_id,
+        APIName: card.name,
+        templateDatumID: card.template_datum_id,
+        templateCardID: card.id
       })
     })
   }
-
-  renderCard(card) {
-    console.log(card, "-------renderCard")
-    setTimeout(function(){
-      var x = eval(`new ${card.name}()`) ;
+  renderCard = (card) => {
+    // console.log(card, "-------renderCard")
+    var self = this;
+    setTimeout(()=>{
+      var x = eval(`new ${card.name}()`);
       console.log(x, "xxxxxxxxxx")
       x.init({
         selector: document.querySelector('#fill_form'),
@@ -60,33 +65,25 @@ class Body extends Component {
         schema_url: card.files.schema_files.schema,
         configuration_url: card.files.configuration_sample, 
         configuration_schema_url: card.files.configuration_schema
-      })
+      });
+      console.log(this);
+      this.setState({
+        protoGraphInstance : x
+      });
       x.renderEdit();
-      x.getData();
-    }, 2000)
+    }, 2000);
   }
 
   handleSelectMoreConfirm(card, formSchemaUrl, event) {
-    console.log("======confirm=========", card, formSchemaUrl, event)
+    // console.log("======confirm=========", card, formSchemaUrl, event)
     var js_script = document.createElement('script');
     document.body.appendChild(js_script);
     js_script.setAttribute('onload', this.renderCard(card));
     js_script.setAttribute('src', card.files.js);
-
     var css_script = document.createElement('link');
     css_script.rel = 'stylesheet';
     css_script.href = card.files.css;
     document.head.appendChild(css_script);
-
-    // var x = new card['name']();
-    // x.init({
-    //   selector: document.querySelector('#explainer-div'),
-    //   data_url: 'https://s3.ap-south-1.amazonaws.com/protos.dev/Schemas/toExplain/0.0.1/sample.json',
-    //   schema_url: 'https://s3.ap-south-1.amazonaws.com/protos.dev/Schemas/toExplain/0.0.1/schema.json',
-    //   configuration_url: 'dist/0.0.1/configuration_sample.json', 
-    //   configuration_schema_url: 'dist/0.0.1/configuration_schema.json'
-    // })
-    // x.renderEdit();
     
     let steps = this.props.steps;
     steps[0].active = false;
@@ -104,10 +101,29 @@ class Body extends Component {
 
 
   handlePublishClick(formData, event) {
+    console.log("---handle publish click-----", this.state)
+    console.log(this.state.protoGraphInstance.getData());
+    var postInstance = axios.create({
+      baseURL: window.baseURL
+    });
+    postInstance.defaults.headers['Access-Token'] = window.accessToken;
+    postInstance.defaults.headers['Content-Type'] = 'application/json';
+    postInstance.post(`${window.baseURL}/accounts/icfj/datacasts`, {
+      "datacast": JSON.stringify(this.state.protoGraphInstance.getData().dataJSON),
+      "view_cast": JSON.stringify({
+        "account_id": this.state.accountID, 
+        "template_datum_id": this.state.templateDatumID,
+        "name": this.state.APIName, 
+        "template_card_id": this.state.templateCardID, 
+        "configJSON": JSON.stringify(this.state.protoGraphInstance.getData().configJSON)
+      })
+    }).then(response => {
+      console.log(response, "post response")
+    })
     this.setState({
       showPublish: true,
-      formData,
-      bodyMarginClass: "margin_shift_left_40"
+      formData
+      // bodyMarginClass: "margin_shift_left_40"
     });
   }
 
@@ -118,7 +134,7 @@ class Body extends Component {
           onSelectCardClick={this.handleSelectCardClick}/>
         {this.state.showSelectMore ?
           <SelectMore card={this.state.currentCard}
-            onSelectMoreConfirm={this.handleSelectMoreConfirm}/>
+            onSelectMoreConfirm={this.handleSelectMoreConfirm} cardData = {this.state.check}/>
           : ''}
 
         <div id="form" className={this.state.formMarginClass}>

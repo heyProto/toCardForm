@@ -14,9 +14,6 @@ class ViewForm extends Component {
   render() {
     return (
       <div id="view_form">
-        The form will be viewed here.<br/>
-        {this.state.formData.question}
-        {this.state.formData.answer}
         <br/>
         <button className="ui green button"
           onClick={this.props.onPublishClick.bind(this, this.state.formData)}>
