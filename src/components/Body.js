@@ -118,6 +118,7 @@ class Body extends Component {
       })
     }).then(response => {
       console.log(response, "post response")
+      window.location.href = response.data.redirect_path;
     })
     this.setState({
       showPublish: true,
