@@ -115,7 +115,7 @@ class Body extends Component {
         "template_datum_id": this.state.templateDatumID,
         "name": this.state.APIName, 
         "template_card_id": this.state.templateCardID, 
-        "configJSON": JSON.stringify(this.state.protoGraphInstance.getData().configJSON)
+        "optionalConfigJSON": JSON.stringify(this.state.protoGraphInstance.getData().optionalConfigJSON)
       })
     }).then(response => {
       console.log(response, "post response")
