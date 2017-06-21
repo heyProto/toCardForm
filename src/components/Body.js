@@ -66,7 +66,6 @@ class Body extends Component {
         configuration_url: card.files.configuration_sample, 
         configuration_schema_url: card.files.configuration_schema
       });
-      console.log(this);
       this.setState({
         protoGraphInstance : x
       });
@@ -115,7 +114,7 @@ class Body extends Component {
         "template_datum_id": this.state.templateDatumID,
         "name": this.state.APIName, 
         "template_card_id": this.state.templateCardID, 
-        "optionalConfigJSON": JSON.stringify(this.state.protoGraphInstance.getData().optionalConfigJSON)
+        "optionalConfigJSON": JSON.stringify(this.state.protoGraphInstance.getData().optionalConfigJSON.configs)
       })
     }).then(response => {
       console.log(response, "post response")
