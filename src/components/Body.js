@@ -101,12 +101,13 @@ class Body extends Component {
 
   handlePublishClick(formData, event) {
     console.log("---handle publish click-----", this.state)
-    console.log(this.state.protoGraphInstance.getData());
+    console.log(this.state.protoGraphInstance.renderSEO(), "this.state.protoGraphInstance.renderSEO()");
     var postInstance = axios.create({
       baseURL: window.baseURL
     });
     postInstance.defaults.headers['Access-Token'] = window.accessToken;
     postInstance.defaults.headers['Content-Type'] = 'application/json';
+    // debugger;
     postInstance.post(`${window.baseURL}/accounts/icfj/datacasts`, {
       "datacast": JSON.stringify(this.state.protoGraphInstance.getData().dataJSON),
       "view_cast": JSON.stringify({
@@ -114,7 +115,8 @@ class Body extends Component {
         "template_datum_id": this.state.templateDatumID,
         "name": this.state.APIName, 
         "template_card_id": this.state.templateCardID, 
-        "optionalConfigJSON": JSON.stringify(this.state.protoGraphInstance.getData().optionalConfigJSON.configs)
+        "seo_blockquote": this.state.protoGraphInstance.renderSEO(),
+        "optionalConfigJSON": JSON.stringify(this.state.protoGraphInstance.getData().optionalConfigJSON)
       })
     }).then(response => {
       console.log(response, "post response")
