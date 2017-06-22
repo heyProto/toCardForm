@@ -109,15 +109,15 @@ class Body extends Component {
     postInstance.defaults.headers['Content-Type'] = 'application/json';
     // debugger;
     postInstance.post(`${window.baseURL}/accounts/icfj/datacasts`, {
-      "datacast": JSON.stringify(this.state.protoGraphInstance.getData().dataJSON),
-      "view_cast": JSON.stringify({
+      "datacast": this.state.protoGraphInstance.getData().dataJSON,
+      "view_cast": {
         "account_id": this.state.accountID, 
         "template_datum_id": this.state.templateDatumID,
         "name": this.state.APIName, 
         "template_card_id": this.state.templateCardID, 
         "seo_blockquote": this.state.protoGraphInstance.renderSEO(),
         "optionalConfigJSON": JSON.stringify(this.state.protoGraphInstance.getData().optionalConfigJSON)
-      })
+      }
     }).then(response => {
       console.log(response, "post response")
       window.location.href = response.data.redirect_path;
