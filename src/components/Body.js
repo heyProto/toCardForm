@@ -29,6 +29,7 @@ class Body extends Component {
     this.handleSelectCardClick = this.handleSelectCardClick.bind(this);
     this.handleSelectMoreConfirm = this.handleSelectMoreConfirm.bind(this);
     this.handlePublishClick = this.handlePublishClick.bind(this);
+    this.handleUpdateClick = this.handleUpdateClick.bind(this);
   }
 
   handleSelectCardClick(card, event) {
@@ -100,8 +101,6 @@ class Body extends Component {
 
 
   handlePublishClick(formData, event) {
-    console.log("---handle publish click-----", this.state)
-    console.log(this.state.protoGraphInstance.renderSEO(), "this.state.protoGraphInstance.renderSEO()");
     var postInstance = axios.create({
       baseURL: window.baseURL
     });
@@ -119,14 +118,58 @@ class Body extends Component {
         "optionalConfigJSON": JSON.stringify(this.state.protoGraphInstance.getData().optionalConfigJSON)
       }
     }).then(response => {
+      document.getElementById("fill_form").innerHTML = "";
+      this.renderUpdateCard();
       console.log(response, "post response")
-      window.location.href = response.data.redirect_path;
+      // window.location.href = response.data.redirect_path;
     })
     this.setState({
       showPublish: true,
       formData
       // bodyMarginClass: "margin_shift_left_40"
     });
+  }
+
+  renderUpdateCard = () => {
+    setTimeout(()=>{
+      var update_x = eval(`new ${window.viewCast.template_card.name}()`);
+      console.log(update_x, "updated xxxxxxxxxx instance")
+      update_x.init({
+        selector: document.querySelector('#fill_form'),
+        data_url: window.viewCast.remote_urls.data_url,
+        schema_url: window.viewCast.remote_urls.schema_json,
+        configuration_url: window.viewCast.remote_urls.configuration_url, 
+        configuration_schema_url: window.viewCast.template_card.files.configuration_schema
+      });
+      update_x.renderEdit();
+      this.setState({
+        updatedInstance : update_x
+      })
+    }, 2000);
+  }
+
+
+  handleUpdateClick() {
+    console.log("update click", this.state, this.state.templateCardID, this.state.updatedInstance)
+    // this.renderUpdateCard();
+    var putInstance =  axios.create({
+      baseURL: window.baseURL
+    });
+    putInstance.defaults.headers['Access-Token'] = window.accessToken;
+    putInstance.defaults.headers['Content-Type'] = 'application/json';
+    putInstance.put(`${window.baseURL}/accounts/icfj/datacasts/${window.viewCast.id}`, {
+      "datacast": this.state.updatedInstance.getData().dataJSON,
+      "view_cast": {
+        "account_id": this.state.accountID, 
+        "template_datum_id": this.state.templateDatumID,
+        "name": this.state.APIName, 
+        "template_card_id": this.state.templateCardID, 
+        "seo_blockquote": this.state.updatedInstance.renderSEO(),
+        "optionalConfigJSON": JSON.stringify(this.state.updatedInstance.getData().optionalConfigJSON)
+      }
+    }).then(response => {
+      console.log(response, "put response")
+    })
   }
 
   render() {
@@ -145,7 +188,7 @@ class Body extends Component {
             : ''}
 
           {this.state.showViewForm ?
-            <ViewForm onPublishClick={this.handlePublishClick} />
+            <ViewForm onPublishClick={this.handlePublishClick} onUpdateClick={this.handleUpdateClick}/>
             : ''}
         </div>
         {this.state.showPublish ?

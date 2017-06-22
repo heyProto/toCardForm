@@ -19,6 +19,10 @@ class ViewForm extends Component {
           onClick={this.props.onPublishClick.bind(this, this.state.formData)}>
           Publish
         </button>
+        <button className="ui green button"
+          onClick={this.props.onUpdateClick.bind(this, this.state.formData)}>
+          Update
+        </button>
       </div>
     )
   }
