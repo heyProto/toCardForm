@@ -56,7 +56,7 @@ class Body extends Component {
     var css_script = document.createElement('link');
     css_script.rel = 'stylesheet';
     css_script.href = card.files.css;
-    document.head.appendChild(css_script);    
+    document.head.appendChild(css_script);
     this.setState({
       showViewForm: false,
       currentStep: 2,
@@ -73,10 +73,10 @@ class Body extends Component {
     postInstance.post(`${window.baseURL}/accounts/icfj/datacasts`, {
       "datacast": this.state.protoGraphInstance.getData().dataJSON,
       "view_cast": {
-        "account_id": this.state.accountID, 
+        "account_id": this.state.accountID,
         "template_datum_id": this.state.templateDatumID,
-        "name": this.state.APIName, 
-        "template_card_id": this.state.templateCardID, 
+        "name": this.state.APIName,
+        "template_card_id": this.state.templateCardID,
         "seo_blockquote": this.state.protoGraphInstance.renderSEO(),
         "optionalConfigJSON": JSON.stringify(this.state.protoGraphInstance.getData().optionalConfigJSON)
       }
@@ -92,12 +92,11 @@ class Body extends Component {
   renderCard(card){
     setTimeout(()=>{
       var x = eval(`new ${card.name}()`);
-      // console.log(x, "xxxxxxxxxx")
       x.init({
         selector: document.querySelector('#view_area'),
         data_url: card.files.schema_files.sample,
         schema_url: card.files.schema_files.schema,
-        configuration_url: card.files.configuration_sample, 
+        configuration_url: card.files.configuration_sample,
         configuration_schema_url: card.files.configuration_schema
       });
       this.setState({
@@ -109,7 +108,7 @@ class Body extends Component {
 
   render() {
     // console.log(this.state.currentStep, "-------")
-    let styles = this.state.currentStep === 1 ? {width: 729} :{width: 925} 
+    let styles = this.state.currentStep === 1 ? {width: 729} :{width: 925}
     return (
       <div className="card-creation-container">
         {this.state.showSideBar ? <SideBar step={this.state.currentStep} onSelectCardClick={this.handleSelectCardClick} /> : ''}

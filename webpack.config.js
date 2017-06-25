@@ -1,7 +1,6 @@
 module.exports = {
   entry: './main.js',
   output: {
-    path: './',
     filename: './dist/bundle.min.js',
   },
   node: {

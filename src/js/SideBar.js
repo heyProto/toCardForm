@@ -4,7 +4,7 @@ import axios from 'axios';
 
 class SideBar extends Component {
   constructor(props) {
-    super(props);                              
+    super(props);
     this.state = {
       cards: [],
       currentStep: 1
@@ -30,7 +30,7 @@ class SideBar extends Component {
   }
 
   handleSearchChange(e) {
-   
+
   }
 
   render() {
@@ -38,7 +38,7 @@ class SideBar extends Component {
     return (
       <div className="card-create-sidebar" style={styles}>
         <div className="card-create-branding single-element">
-          <div className="branding-icon"><img src="src/img/branding-icon.png" height="100%"/></div>
+          <div className="branding-icon"><img src="/img/branding-icon.png" height="100%"/></div>
             <div className="branding-name subheading-text">Pykih</div>
           </div>
         <div className="sidebar-card-search">
@@ -46,7 +46,7 @@ class SideBar extends Component {
         </div>
         <div>
           {
-            this.state.cards.map((card, i) => 
+            this.state.cards.map((card, i) =>
               <SelectCard card={card} key={i} onSelectCardClick={this.props.onSelectCardClick.bind(this, card)} />)
           }
         </div>
