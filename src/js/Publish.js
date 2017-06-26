@@ -4,7 +4,7 @@ class Publish extends Component {
   render() {
     return (
       <div>
-        <button type="button" className="default-button primary-button publish-button" onClick={this.props.onPublishClick.bind(this, this.props.card)}>Publish</button>
+        <button id="proto_publish_button" type="button" className="default-button primary-button publish-button" onClick={this.props.onPublishClick.bind(this, this.props.card)}>Publish</button>
       </div>
     )
   }
