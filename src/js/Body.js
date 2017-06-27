@@ -30,7 +30,7 @@ class Body extends Component {
     });
     instance.defaults.headers['Access-Token'] = window.accessToken;
     instance.defaults.headers['Content-Type'] = 'application/json';
-    instance.get(`${window.baseURL}/accounts/${card.account_slug}/template_cards/${card.id}`, {
+    instance.get(`${window.baseURL}/accounts/${window.accountSlug}/template_cards/${card.id}`, {
       timeout: 5000
     }).then(response => {
       console.log(response, "response of card data")
@@ -70,7 +70,7 @@ class Body extends Component {
     });
     postInstance.defaults.headers['Access-Token'] = window.accessToken;
     postInstance.defaults.headers['Content-Type'] = 'application/json';
-    postInstance.post(`${window.baseURL}/accounts/${card.account_slug}/datacasts`, {
+    postInstance.post(`${window.baseURL}/accounts/${window.accountSlug}/datacasts`, {
       "datacast": this.state.protoGraphInstance.getData().dataJSON,
       "view_cast": {
         "account_id": this.state.accountID,
@@ -91,7 +91,7 @@ class Body extends Component {
 
   renderCard(card){
     setTimeout(()=>{
-      var x = eval(`new ${card.name}()`);
+      var x = eval(`new ${card.git_repo_name}()`);
       x.init({
         selector: document.querySelector('#view_area'),
         data_url: card.files.schema_files.sample,
