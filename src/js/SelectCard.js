@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class SelectCard extends Component {
   render() {
     return (
-      <div className="single-element" onClick={this.props.onSelectCardClick}>
+      <div className="single-element" id = {this.props.card.name} onClick={this.props.onSelectCardClick}>
         <div className="card-type-icon">
           <img src={this.props.card.icon_url} />
         </div>

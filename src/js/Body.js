@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-const Form = require('react-jsonschema-form');
 import SideBar from '../js/SideBar';
 import Steps from '../js/Steps';
 import ViewForm from '../js/ViewForm';
@@ -25,7 +24,16 @@ class Body extends Component {
   }
 
   handleSelectCardClick(card, event) {
-    console.log("handleSelectCardClick");
+    var rem = document.getElementsByClassName('single-element active');
+    var inactive = "single-element";
+    var active = "single-element active";
+    var i = 0;
+    while (i < rem.length) {
+      i++;
+      rem[0].className = inactive;
+    }
+    var add = document.getElementById(card.name);
+    add.className = active;
     let instance = axios.create({
       baseURL: window.baseURL
     });
@@ -53,7 +61,7 @@ class Body extends Component {
     let js_script = document.createElement('script');
     document.body.appendChild(js_script);
     js_script.setAttribute('onload', this.renderCard(card));
-    js_script.setAttribute('src', card.files.js);
+    js_script.setAttribute('src', card.files.edit_file_js);
     var css_script = document.createElement('link');
     css_script.rel = 'stylesheet';
     css_script.href = card.files.css;
@@ -69,17 +77,18 @@ class Body extends Component {
     let postInstance = axios.create({
       baseURL: window.baseURL
     });
+    let postData = this.state.protoGraphInstance.getData();
     postInstance.defaults.headers['Access-Token'] = window.accessToken;
     postInstance.defaults.headers['Content-Type'] = 'application/json';
     postInstance.post(`${window.baseURL}/accounts/${window.accountSlug}/datacasts`, {
-      "datacast": this.state.protoGraphInstance.getData().dataJSON,
+      "datacast": postData.dataJSON,
       "view_cast": {
         "account_id": this.state.accountID,
         "template_datum_id": this.state.templateDatumID,
-        "name": this.state.APIName,
+        "name": postData.name,
         "template_card_id": this.state.templateCardID,
         "seo_blockquote": this.state.protoGraphInstance.renderSEO(),
-        "optionalConfigJSON": JSON.stringify(this.state.protoGraphInstance.getData().optionalConfigJSON)
+        "optionalConfigJSON": JSON.stringify(postData.optionalConfigJSON)
       }
     }).then(response => {
       console.log(response, "post response")

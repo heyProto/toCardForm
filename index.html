@@ -3,13 +3,20 @@
 <head>
   <title>Card Creator</title>
   <link rel="stylesheet" type="text/css" href="src/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="lib/css/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="lib/css/semantic-theme.css">
+
+  <script src="http://cdn.bootcss.com/react/15.4.1/react.js"></script>
+  <script src="http://cdn.bootcss.com/react/15.4.1/react-dom.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://s3.ap-south-1.amazonaws.com/protos.dev/cards/Vendors/react-jsonschema-form.js"></script>
 </head>
 <body>
   <div id="root"></div>
   <script type="text/javascript">
     window.accessToken = '00a5c2a096266862b6454ce374e73519d692ee364d026c14';
     // window.baseURL = 'https://bab611a1.ngrok.io/api/v1';
-    window.baseURL = 'http://localhost:3000/api/v1'
+    window.baseURL = 'http://192.168.0.100:3000/api/v1'
     window.accountSlug = "icfj"
   </script>
   <script src="dist/bundle.min.js"></script>
