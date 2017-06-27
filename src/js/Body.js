@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+const Form = require('react-jsonschema-form');
 import SideBar from '../js/SideBar';
 import Steps from '../js/Steps';
 import ViewForm from '../js/ViewForm';
@@ -40,7 +41,7 @@ class Body extends Component {
         showPublish: false,
         currentCard: response.data.template_card,
         accountID: card.account_id,
-        APIName: card.name,
+        APIName: card.git_repo_name,
         templateDatumID: card.template_datum_id,
         templateCardID: card.id,
         currentStep: 1

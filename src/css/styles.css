@@ -68,7 +68,7 @@ p{
 }
 
 .single-element{
-  padding: 10px 1px;
+  padding: 7px 10px;
   display: inline-block;
   position: relative;
   box-sizing: border-box;
@@ -179,8 +179,8 @@ p{
   color: #bbb;
   border: 2px solid #bbb;
   border-radius: 50px;
-  height: 32px;
-  width: 32px;
+  height: 28px;
+  width: 33px;
   text-align: center;
   font-size: 1.3em;
   vertical-align: middle;
