@@ -51,19 +51,19 @@ class ConfirmCard extends Component {
           </div>
           <div className="preview-minimap">
             <div className="preview-mini-div" onClick={this.handleSelectCardClick}>
-              <img className="preview-mini-img" data-index="1" style={selectedCard == 1 ? styles : {}} src="./src/img/preview-1.png" />
+              <img className="preview-mini-img" data-index="1" style={selectedCard == 1 ? styles : {}} src="https://s3.ap-south-1.amazonaws.com/protos.dev/Assets/preview-1.png" />
             </div>
             <div className="preview-mini-div" onClick={this.handleSelectCardClick}>
-              <img className="preview-mini-img" data-index="2" style={selectedCard == 2 ? styles : {}} src="./src/img/preview-2.png" />
+              <img className="preview-mini-img" data-index="2" style={selectedCard == 2 ? styles : {}} src="https://s3.ap-south-1.amazonaws.com/protos.dev/Assets/preview-2.png" />
             </div>
             <div className="preview-mini-div" onClick={this.handleSelectCardClick}>
-              <img className="preview-mini-img" data-index="3" style={selectedCard == 3 ? styles : {}} src="./src/img/preview-3.png" />
+              <img className="preview-mini-img" data-index="3" style={selectedCard == 3 ? styles : {}} src="https://s3.ap-south-1.amazonaws.com/protos.dev/Assets/preview-3.png" />
             </div>
             <div className="preview-mini-div" onClick={this.handleSelectCardClick}>
-              <img className="preview-mini-img" data-index="4" style={selectedCard == 4 ? styles : {}} src="./src/img/preview-4.png" />
+              <img className="preview-mini-img" data-index="4" style={selectedCard == 4 ? styles : {}} src="https://s3.ap-south-1.amazonaws.com/protos.dev/Assets/preview-4.png" />
             </div>
             <div className="preview-mini-div" onClick={this.handleSelectCardClick}>
-              <img className="preview-mini-img" data-index="5" style={selectedCard == 5 ? styles : {}} src="./src/img/preview-5.png" />
+              <img className="preview-mini-img" data-index="5" style={selectedCard == 5 ? styles : {}} src="https://s3.ap-south-1.amazonaws.com/protos.dev/Assets/preview-5.png" />
             </div>
           </div>
         </div>
