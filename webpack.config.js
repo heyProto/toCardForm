@@ -1,7 +1,7 @@
 module.exports = {
   entry: './main.js',
   output: {
-    filename: './dist/bundle.min.js',
+    filename: './dist/bundle.min.js'
   },
   node: {
     net: 'empty',

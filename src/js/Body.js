@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-const Form = require('react-jsonschema-form');
+const Form = require('../../react-jsonschema-form');
 import SideBar from '../js/SideBar';
 import Steps from '../js/Steps';
 import ViewForm from '../js/ViewForm';
@@ -25,7 +25,16 @@ class Body extends Component {
   }
 
   handleSelectCardClick(card, event) {
-    console.log("handleSelectCardClick");
+    var rem = document.getElementsByClassName('single-element active');
+    var inactive = "single-element";
+    var active = "single-element active";
+    var i = 0;
+    while (i < rem.length) {
+      i++;
+      rem[0].className = inactive;
+    }
+    var add = document.getElementById(card.name);
+    add.className = active;
     let instance = axios.create({
       baseURL: window.baseURL
     });

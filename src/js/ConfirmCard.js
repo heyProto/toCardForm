@@ -15,7 +15,7 @@ class ConfirmCard extends Component {
           <p>ID: {this.props.card.id}</p>
           <p>Slug: {this.props.card.slug}</p>
           <p>Template Datum Id: {this.props.card.template_datum_id}</p>
-          <button type="button" className="default-button primary-button" onClick={this.props.onSelectConfirmClick.bind(this, this.props.card)}>Confirm</button>
+          <button type="button" className="default-button primary-button" onClick={this.props.onSelectConfirmClick.bind(this, this.props.card)}>Next -></button>
         </div>
       </div>
     )
