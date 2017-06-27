@@ -33,7 +33,7 @@ class SideBar extends Component {
 
   handleSearchChange(e) {
     console.log(e.target.value);
-    const query = e.target.value;
+    const query = e.target.value.toLowerCase();
      if (query === "") {
        this.setState({
          cards: this.state.cardData
@@ -42,7 +42,7 @@ class SideBar extends Component {
      }
      this.setState({
        cards: this.state.cardData.filter((card) => {
-        return card.name.includes(query);
+        return card.name.toLowerCase().includes(query);
        })
      });
   }
