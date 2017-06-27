@@ -21,7 +21,7 @@ class ConfirmCard extends Component {
   render() {
     console.log("render");
     let selectedCard = this.state.selectedCard,
-      mainImage = './src/img/preview-' + selectedCard + '.png',
+      mainImage = 'https://s3.ap-south-1.amazonaws.com/protos.dev/Assets/preview-' + selectedCard + '.png',
       styles = {
         opacity: 1
       };
