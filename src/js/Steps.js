@@ -8,11 +8,11 @@ class Steps extends Component {
       <div className="steps-bar">
         <div className={`card-create-col-6 steps step-1 ${activeStep1}`}>
           <div className="step-no">1</div>
-          <div className="step-name">Card Selection</div>
+          <div className="step-name">Select</div>
         </div>
         <div className={`card-create-col-6 steps step-2 ${activeStep2}`}>
           <div className="step-no">2</div>
-          <div className="step-name">Card Creation</div>
+          <div className="step-name">Write</div>
         </div>
       </div>
     )
