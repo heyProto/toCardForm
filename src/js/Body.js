@@ -62,7 +62,7 @@ class Body extends Component {
     let js_script = document.createElement('script');
     document.body.appendChild(js_script);
     js_script.setAttribute('onload', this.renderCard(card));
-    js_script.setAttribute('src', card.files.js);
+    js_script.setAttribute('src', card.files.edit_file_js);
     var css_script = document.createElement('link');
     css_script.rel = 'stylesheet';
     css_script.href = card.files.css;
