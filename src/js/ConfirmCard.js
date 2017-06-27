@@ -6,8 +6,15 @@ class ConfirmCard extends Component {
     return(
       <div id="view_area" className="selected-card-preview">
         <div className="card-create-col-6">
-          <div className="preview-title">Quiz</div>
-          <p>A quiz is a simple and fun story telling format that journalists can use to educate readers on critical information. A well-framed quiz can drive engagement because it challenges the readers knowledge on a topic. Beginners can create a quiz using nothing more than a Google spreadsheet. The experience of the quiz is similar to that Flash cards.</p>
+          <div className="preview-title">{this.props.card.name}</div>
+          <p>Account ID: {this.props.card.account_id}</p>
+          <p>Account Slug: {this.props.card.account_slug}</p>
+          <p>Global Slug: {this.props.card.global_slug}</p>
+          <p>Elevator Pitch: {this.props.card.elevator_pitch}</p>
+          <p>Icon URL: {this.props.card.files.icon_url}</p>
+          <p>ID: {this.props.card.id}</p>
+          <p>Slug: {this.props.card.slug}</p>
+          <p>Template Datum Id: {this.props.card.template_datum_id}</p>
           <button type="button" className="default-button primary-button" onClick={this.props.onSelectConfirmClick.bind(this, this.props.card)}>Confirm</button>
         </div>
       </div>
@@ -16,3 +23,4 @@ class ConfirmCard extends Component {
 }
 
 export default ConfirmCard;
+

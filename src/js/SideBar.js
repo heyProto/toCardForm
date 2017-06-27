@@ -37,12 +37,8 @@ class SideBar extends Component {
     let styles = (this.props.step === 1 || this.props.step === undefined)? {width: 250} : {width: 54}
     return (
       <div className="card-create-sidebar" style={styles}>
-        <div className="card-create-branding single-element">
-          <div className="branding-icon"><img src="/img/branding-icon.png" height="100%"/></div>
-            <div className="branding-name subheading-text">Pykih</div>
-          </div>
         <div className="sidebar-card-search">
-          <input type="text" className="sidebar-textbox" value="" id="root_firstName" label="First name" required="" placeholder="Search cards"/>
+          <input type="text" className="sidebar-textbox" value="" id="root_firstName" label="First name" required="" placeholder="Search cards" autoFocus/>
         </div>
         <div>
           {
