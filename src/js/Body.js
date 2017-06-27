@@ -103,7 +103,7 @@ class Body extends Component {
         protoGraphInstance : x
       });
       x.renderEdit();
-    }, 2000);
+    }, 5000);
   }
 
   render() {

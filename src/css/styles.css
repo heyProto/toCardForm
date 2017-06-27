@@ -91,6 +91,7 @@ p{
   box-sizing: border-box;
   border: 0px;
   font-size: 1em;
+  height:50px;
 }
 
 .sidebar-textbox:focus{
@@ -140,6 +141,10 @@ p{
   display: inline-block;
   float: left;
   margin-top: 5px;
+}
+
+.card-account-name{
+  font-size: 10px;
 }
 
 
