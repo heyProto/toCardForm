@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-const Form = require('react-jsonschema-form');
 import SideBar from '../js/SideBar';
 import Steps from '../js/Steps';
 import ViewForm from '../js/ViewForm';
