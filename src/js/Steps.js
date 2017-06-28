@@ -14,6 +14,7 @@ class Steps extends Component {
           <div className="step-no">2</div>
           <div className="step-name">Write</div>
         </div>
+        <div className="clearfix"></div>
       </div>
     )
   }

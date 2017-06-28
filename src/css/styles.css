@@ -313,6 +313,16 @@ p{
   opacity: 1;
 }
 
+.section-title {
+  display: none;
+}
+
+.section-title-text{
+  font-size: 1.5em;
+  padding: 20px 15px;
+  font-weight: bold;
+}
+
 /*========= buttons ===========*/
 .default-button{
   padding: 7px 12px;

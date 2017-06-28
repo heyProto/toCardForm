@@ -70,7 +70,7 @@ class Body extends Component {
       showViewForm: false,
       currentStep: 2,
       showPublish: true
-    })
+    });
   }
 
   handlePublishClick(formData, event) {
@@ -113,6 +113,7 @@ class Body extends Component {
         protoGraphInstance : x
       });
       x.renderEdit();
+      document.querySelector(".section-title").style.display = "block";
     }, 5000);
   }
 
@@ -124,6 +125,10 @@ class Body extends Component {
         {this.state.showSideBar ? <SideBar step={this.state.currentStep} onSelectCardClick={this.handleSelectCardClick} /> : ''}
         <div className="steps-area" style={styles}>
           {this.state.showSteps ? <Steps stepNumber={this.state.currentStep}/> : ''}
+          <div className="section-title">
+            <div className="card-create-col-6 section-title-text">Fill the form</div>
+            <div className="card-create-col-6 section-title-text">This is how it will look</div>
+          </div>
           {this.state.showViewForm ? <ViewForm /> : ''}
           {this.state.showConfirmCard ?
             <ConfirmCard card = {this.state.currentCard} onSelectConfirmClick = {this.handleSelectConfirmCard}/>
