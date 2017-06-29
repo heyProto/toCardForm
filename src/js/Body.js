@@ -126,11 +126,10 @@ class Body extends Component {
 
   render() {
     // console.log(this.state.currentStep, "-------")
-    let styles = this.state.currentStep === 1 ? {width: 729} :{width: 925}
     return (
-      <div className="card-creation-container">
+      <div className="card-creation-container ui grid">
         {this.state.showSideBar ? <SideBar step={this.state.currentStep} onSelectCardClick={this.handleSelectCardClick} /> : ''}
-        <div className="steps-area" style={styles}>
+        <div className="steps-area thirteen wide column">
           {this.state.showSteps ? <Steps stepNumber={this.state.currentStep}/> : ''}
           <div className="section-title">
             <div className="card-create-col-6 section-title-text">Fill the form</div>

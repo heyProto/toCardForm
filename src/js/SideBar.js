@@ -48,9 +48,8 @@ class SideBar extends Component {
   }
 
   render() {
-    let styles = (this.props.step === 1 || this.props.step === undefined)? {width: 250} : {width: 54}
     return (
-      <div className="card-create-sidebar" style={styles}>
+      <div className="card-create-sidebar three wide column">
         <div className="sidebar-card-search">
           <input type="text" className="sidebar-textbox" id="root_firstName" label="First name" required="" placeholder="Search cards" autoFocus onChange = {this.handleSearchChange}/>
         </div>

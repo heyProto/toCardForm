@@ -13,7 +13,6 @@ body{
 }
 
 .card-creation-container{
-  width: 980px;
   margin-left: auto;
   margin-right: auto;
   /*margin-top: 50px;*/
@@ -62,10 +61,7 @@ p{
   position: absolute;
   z-index: 999;
   background: white;
-}
-
-.card-create-sidebar:hover{
-  width: 250px;
+  padding-right: 0px !important;
 }
 
 .sidebar-card-search{
@@ -73,11 +69,11 @@ p{
 }
 
 .single-element{
+  width: 100%;
   padding: 7px 10px;
   display: inline-block;
   position: relative;
   box-sizing: border-box;
-  width: 250px;
   cursor:pointer;
 }
 
@@ -167,10 +163,10 @@ p{
 /*========== steps-area ==========*/
 .steps-area{
   position: relative;
-  width: 729px;
   height: 100%;
   display: inline-block;
   float: right;
+  padding-left: 0px !important;
 }
 
 .steps{
@@ -275,7 +271,7 @@ p{
 }
 
 .protograph_card_div{
-  width: 300px;
+  width: 350px !important;
   text-align: left;
 }
 
@@ -359,6 +355,8 @@ p{
 
 #proto_publish_button {
   position: absolute;
-  right: 30px;
-  bottom: 30px;
+  right: 70px;
+  bottom: 50px;
+  font-size: 1.2em;
+  padding: 9px 25px
 }
