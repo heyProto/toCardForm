@@ -112,7 +112,14 @@ class Body extends Component {
       this.setState({
         protoGraphInstance : x
       });
-      x.renderEdit();
+      x.renderEdit({
+        onLastStep: function() {
+          document.querySelector(".steps-area .publish-button").style.display = "block";
+        },
+        notOnLastStep: function() {
+          document.querySelector(".steps-area .publish-button").style.display = "none";
+        }
+      });
       document.querySelector(".section-title").style.display = "block";
     }, 5000);
   }

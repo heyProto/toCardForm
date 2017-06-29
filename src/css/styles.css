@@ -9,6 +9,7 @@ body{
 
 .publish-button{
   margin-left: 15px;
+  display: none;
 }
 
 .card-creation-container{
