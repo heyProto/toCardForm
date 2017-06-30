@@ -121,7 +121,7 @@ class Body extends Component {
         }
       });
       document.querySelector(".section-title").style.display = "block";
-    }, 5000);
+    }, 200);
   }
 
   render() {
