@@ -61,7 +61,6 @@ class Body extends Component {
     let js_script = document.createElement('script'),
       loaded;
     document.body.appendChild(js_script);
-    // js_script.setAttribute('onload', this.renderCard(card));
     js_script.onreadystatechange = js_script.onload = () => {
       if(!loaded) {
         this.renderCard(card);
@@ -107,7 +106,6 @@ class Body extends Component {
   }
 
   renderCard(card){
-    // setTimeout(()=>{
       var x = eval(`new ${card.git_repo_name}()`);
       x.init({
         selector: document.querySelector('#view_area'),
@@ -128,7 +126,6 @@ class Body extends Component {
         }
       });
       document.querySelector(".section-title").style.display = "block";
-    // }, 5000);
   }
 
   render() {
