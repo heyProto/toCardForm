@@ -58,9 +58,15 @@ class Body extends Component {
   }
 
   handleSelectConfirmCard(card) {
-    let js_script = document.createElement('script');
+    let js_script = document.createElement('script'),
+      loaded;
     document.body.appendChild(js_script);
-    js_script.setAttribute('onload', this.renderCard(card));
+    js_script.onreadystatechange = js_script.onload = () => {
+      if(!loaded) {
+        this.renderCard(card);
+      }
+      loaded = true;
+    };
     js_script.setAttribute('src', card.files.edit_file_js);
     var css_script = document.createElement('link');
     css_script.rel = 'stylesheet';
@@ -100,7 +106,6 @@ class Body extends Component {
   }
 
   renderCard(card){
-    setTimeout(()=>{
       var x = eval(`new ${card.git_repo_name}()`);
       x.init({
         selector: document.querySelector('#view_area'),
@@ -121,7 +126,6 @@ class Body extends Component {
         }
       });
       document.querySelector(".section-title").style.display = "block";
-    }, 200);
   }
 
   render() {
