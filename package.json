@@ -26,7 +26,7 @@
     "webpack-dev-server": "^1.16.2"
   },
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --optimize-minimize",
     "start": "webpack-dev-server --public --host 0.0.0.0"
   },
   "author": "",
