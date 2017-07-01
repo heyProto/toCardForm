@@ -93,7 +93,7 @@ class Body extends Component {
         "template_datum_id": this.state.templateDatumID,
         "name": postData.name,
         "template_card_id": this.state.templateCardID,
-        "seo_blockquote": this.state.protoGraphInstance.renderSEO(),
+        "seo_blockquote": (typeof(this.state.protoGraphInstance.renderSEO) == "function") ? this.state.protoGraphInstance.renderSEO() : "",
         "optionalConfigJSON": JSON.stringify(postData.optionalConfigJSON)
       }
     }).then(response => {
