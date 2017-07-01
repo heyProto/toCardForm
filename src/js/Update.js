@@ -70,7 +70,7 @@ class Update extends Component {
         "template_datum_id": this.state.templateDatumID,
         "name": this.state.APIName,
         "template_card_id": this.state.templateCardID,
-        "seo_blockquote": this.state.updatedInstance.renderSEO(),
+        "seo_blockquote": (typeof(this.state.updatedInstance.renderSEO) == "function") ? this.state.updatedInstance.renderSEO() : "",
         "optionalConfigJSON": JSON.stringify(this.state.updatedInstance.getData().optionalConfigJSON)
       }
     }).then(response => {
