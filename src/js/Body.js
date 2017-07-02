@@ -107,8 +107,8 @@ class Body extends Component {
 
   getProtoInstance(instanceString) {
     switch (instanceString) {
-      case 'ProtoGraph.Card.toShare':
-        return new ProtoGraph.Card.toShare();
+      case 'ProtoGraph.Card.toSocial':
+        return new ProtoGraph.Card.toSocial();
         break;
       case 'ProtoGraph.Card.toExplain':
         return new ProtoGraph.Card.toExplain();
