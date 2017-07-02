@@ -19,7 +19,7 @@ class SideBar extends Component {
     });
     instance.defaults.headers['Access-Token'] = window.accessToken;
     instance.defaults.headers['Content-Type'] = 'application/json';
-    instance.get(`${window.baseURL}/accounts/icfj/template_cards/`, {
+    instance.get(`${window.baseURL}/accounts/${window.accountSlug}/template_cards/`, {
       timeout: 5000
     }).then(response => {
       console.log(response, "response")

@@ -63,7 +63,7 @@ class Update extends Component {
     });
     putInstance.defaults.headers['Access-Token'] = window.accessToken;
     putInstance.defaults.headers['Content-Type'] = 'application/json';
-    putInstance.put(`${window.baseURL}/accounts/icfj/datacasts/${window.viewCast.id}`, {
+    putInstance.put(`${window.baseURL}/accounts/${window.accountSlug}/datacasts/${window.viewCast.id}`, {
       "datacast": this.state.updatedInstance.getData().dataJSON,
       "view_cast": {
         "account_id": this.state.accountID,
