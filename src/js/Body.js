@@ -105,27 +105,41 @@ class Body extends Component {
     });
   }
 
+  getProtoInstance(instanceString) {
+    switch (instanceString) {
+      case 'ProtoGraph.Card.toShare':
+        return new ProtoGraph.Card.toShare();
+        break;
+      case 'ProtoGraph.Card.toExplain':
+        return new ProtoGraph.Card.toExplain();
+        break;
+      // case 'ProtoGraph.Card.toQuiz':
+      //   return new ProtoGraph.Card.toQuiz();
+      //   break;
+    }
+  }
+
   renderCard(card){
-      var x = eval(`new ${card.git_repo_name}()`);
-      x.init({
-        selector: document.querySelector('#view_area'),
-        data_url: card.files.schema_files.sample,
-        schema_url: card.files.schema_files.schema,
-        configuration_url: card.files.configuration_sample,
-        configuration_schema_url: card.files.configuration_schema
-      });
-      this.setState({
-        protoGraphInstance : x
-      });
-      x.renderEdit({
-        onLastStep: function() {
-          document.querySelector(".steps-area .publish-button").style.display = "block";
-        },
-        notOnLastStep: function() {
-          document.querySelector(".steps-area .publish-button").style.display = "none";
-        }
-      });
-      document.querySelector(".section-title").style.display = "block";
+    var x = this.getProtoInstance(card.git_repo_name);
+    x.init({
+      selector: document.querySelector('#view_area'),
+      data_url: card.files.schema_files.sample,
+      schema_url: card.files.schema_files.schema,
+      configuration_url: card.files.configuration_sample,
+      configuration_schema_url: card.files.configuration_schema
+    });
+    this.setState({
+      protoGraphInstance : x
+    });
+    x.renderEdit({
+      onLastStep: function() {
+        document.querySelector(".steps-area .publish-button").style.display = "block";
+      },
+      notOnLastStep: function() {
+        document.querySelector(".steps-area .publish-button").style.display = "none";
+      }
+    });
+    document.querySelector(".section-title").style.display = "block";
   }
 
   render() {
