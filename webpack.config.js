@@ -5,6 +5,13 @@ module.exports = {
   output: {
     filename: './dist/bundle.min.js'
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
+  ],
   node: {
     net: 'empty',
     tls: 'empty',
