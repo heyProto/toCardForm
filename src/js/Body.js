@@ -58,6 +58,11 @@ class Body extends Component {
   handleSelectConfirmCard(card) {
     let js_script = document.createElement('script'),
       loaded;
+    this.setState({
+      showViewForm: false,
+      currentStep: 2,
+      showSideBar: false
+    });
     document.body.appendChild(js_script);
     js_script.onreadystatechange = js_script.onload = () => {
       if(!loaded) {
@@ -70,10 +75,6 @@ class Body extends Component {
     css_script.rel = 'stylesheet';
     css_script.href = card.files.css;
     document.head.appendChild(css_script);
-    this.setState({
-      showViewForm: false,
-      currentStep: 2
-    });
   }
 
   handlePublishClick(toCardFormInstance) {
@@ -116,7 +117,7 @@ class Body extends Component {
   renderCard(card){
     var x = this.getProtoInstance(card.git_repo_name);
     x.init({
-      selector: document.querySelector('#view_area'),
+      selector: document.querySelector('#protograph_edit_form_holder'),
       data_url: card.files.schema_files.sample,
       schema_url: card.files.schema_files.schema,
       configuration_url: card.files.configuration_sample,
@@ -126,26 +127,43 @@ class Body extends Component {
       protoGraphInstance : x
     });
     x.renderEdit((e) => {this.handlePublishClick(this)});
-    document.querySelector(".section-title").style.display = "block";
+  }
+
+  handleGoBack(e) {
+    // this.setState({
+    //   showSideBar: true
+    // })
+    location.reload(true);
   }
 
   render() {
-    return (
-      <div className="card-creation-container ui grid">
-        {this.state.showSideBar ? <SideBar step={this.state.currentStep} onSelectCardClick={this.handleSelectCardClick} /> : ''}
-        <div className="steps-area thirteen wide column">
-          {this.state.showSteps ? <Steps stepNumber={this.state.currentStep}/> : ''}
-          <div className="section-title">
-            <div className="card-create-col-6 section-title-text">Fill the form</div>
-            <div className="card-create-col-6 section-title-text">This is how it will look</div>
+    if (this.state.showSideBar) {
+      return (
+        <div className="card-creation-container ui grid">
+          {this.state.showSideBar ? <SideBar step={this.state.currentStep} onSelectCardClick={this.handleSelectCardClick} /> : ''}
+          <div className="thirteen wide column">
+            {this.state.showViewForm &&
+              <div className="display-area">
+                Select a card from sidebar
+              </div>
+            }
+            {
+              this.state.showConfirmCard &&
+                <ConfirmCard card={this.state.currentCard} onSelectConfirmClick={this.handleSelectConfirmCard} />
+            }
           </div>
-          {this.state.showViewForm ? <ViewForm /> : ''}
-          {this.state.showConfirmCard ?
-            <ConfirmCard card = {this.state.currentCard} onSelectConfirmClick = {this.handleSelectConfirmCard}/>
-            : ''}
         </div>
-      </div>
-    )
+      )
+    } else  {
+      return (
+        <div>
+          <div className="proto-container">
+            <button className ="ui button default-button" onClick={(e) => {this.handleGoBack(e)}}><i className="angle left icon"></i></button>
+          </div>
+          <div id="protograph_edit_form_holder">Loading</div>
+        </div>
+      )
+    }
   }
 }
 
