@@ -15,8 +15,7 @@ class Body extends Component {
       showConfirmCard: false,
       showSteps: true,
       showSideBar: true,
-      showViewForm: true,
-      showPublish: false
+      showViewForm: true
     }
     this.handleSelectCardClick = this.handleSelectCardClick.bind(this);
     this.handleSelectConfirmCard = this.handleSelectConfirmCard.bind(this);
@@ -46,7 +45,6 @@ class Body extends Component {
       this.setState({
         showConfirmCard: true,
         showViewForm: false,
-        showPublish: false,
         currentCard: response.data.template_card,
         accountID: card.account_id,
         APIName: card.git_repo_name,
@@ -74,35 +72,31 @@ class Body extends Component {
     document.head.appendChild(css_script);
     this.setState({
       showViewForm: false,
-      currentStep: 2,
-      showPublish: true
+      currentStep: 2
     });
   }
 
-  handlePublishClick(formData, event) {
+  handlePublishClick(toCardFormInstance) {
     let postInstance = axios.create({
       baseURL: window.baseURL
     });
-    let postData = this.state.protoGraphInstance.getData();
+    let postData = toCardFormInstance.state.protoGraphInstance.getData();
     postInstance.defaults.headers['Access-Token'] = window.accessToken;
     postInstance.defaults.headers['Content-Type'] = 'application/json';
     postInstance.post(`${window.baseURL}/accounts/${window.accountSlug}/datacasts`, {
       "datacast": postData.dataJSON,
       "view_cast": {
-        "account_id": this.state.accountID,
-        "template_datum_id": this.state.templateDatumID,
+        "account_id": toCardFormInstance.state.accountID,
+        "template_datum_id": toCardFormInstance.state.templateDatumID,
         "name": postData.name,
-        "template_card_id": this.state.templateCardID,
-        "seo_blockquote": (typeof(this.state.protoGraphInstance.renderSEO) == "function") ? this.state.protoGraphInstance.renderSEO() : "",
+        "template_card_id": toCardFormInstance.state.templateCardID,
+        "seo_blockquote": (typeof(toCardFormInstance.state.protoGraphInstance.renderSEO) == "function") ? toCardFormInstance.state.protoGraphInstance.renderSEO() : "",
         "optionalConfigJSON": JSON.stringify(postData.optionalConfigJSON)
       }
     }).then(response => {
       console.log(response, "post response")
       window.location.href = response.data.redirect_path;
     })
-    this.setState({
-      showPublish: true
-    });
   }
 
   getProtoInstance(instanceString) {
@@ -131,19 +125,11 @@ class Body extends Component {
     this.setState({
       protoGraphInstance : x
     });
-    x.renderEdit({
-      onLastStep: function() {
-        document.querySelector(".steps-area .publish-button").style.display = "block";
-      },
-      notOnLastStep: function() {
-        document.querySelector(".steps-area .publish-button").style.display = "none";
-      }
-    });
+    x.renderEdit((e) => {this.handlePublishClick(this)});
     document.querySelector(".section-title").style.display = "block";
   }
 
   render() {
-    // console.log(this.state.currentStep, "-------")
     return (
       <div className="card-creation-container ui grid">
         {this.state.showSideBar ? <SideBar step={this.state.currentStep} onSelectCardClick={this.handleSelectCardClick} /> : ''}
@@ -156,9 +142,6 @@ class Body extends Component {
           {this.state.showViewForm ? <ViewForm /> : ''}
           {this.state.showConfirmCard ?
             <ConfirmCard card = {this.state.currentCard} onSelectConfirmClick = {this.handleSelectConfirmCard}/>
-            : ''}
-          {this.state.showPublish ?
-            <Publish card = {this.state.currentCard} onPublishClick = {this.handlePublishClick}/>
             : ''}
         </div>
       </div>
