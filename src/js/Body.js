@@ -1,9 +1,4 @@
 import React, { Component } from 'react';
-import SideBar from '../js/SideBar';
-import Steps from '../js/Steps';
-import ViewForm from '../js/ViewForm';
-import ConfirmCard from '../js/ConfirmCard';
-import Publish from '../js/Publish';
 import axios from 'axios';
 
 class Body extends Component {
@@ -12,27 +7,32 @@ class Body extends Component {
     this.state = {
       currentStep: 1,
       currentCard: null,
-      showConfirmCard: false,
-      showSteps: true,
-      showSideBar: true,
-      showViewForm: true
+      cards: [],
+      cardData:[]
     }
     this.handleSelectCardClick = this.handleSelectCardClick.bind(this);
     this.handleSelectConfirmCard = this.handleSelectConfirmCard.bind(this);
     this.handlePublishClick = this.handlePublishClick.bind(this);
   }
 
-  handleSelectCardClick(card, event) {
-    var rem = document.getElementsByClassName('single-element active');
-    var inactive = "single-element";
-    var active = "single-element active";
-    var i = 0;
-    while (i < rem.length) {
-      i++;
-      rem[0].className = inactive;
-    }
-    var add = document.getElementById(card.name);
-    add.className = active;
+  componentDidMount() {
+    let instance = axios.create({
+      baseURL: window.baseURL
+    });
+    instance.defaults.headers['Access-Token'] = window.accessToken;
+    instance.defaults.headers['Content-Type'] = 'application/json';
+    instance.get(`${window.baseURL}/accounts/${window.accountSlug}/template_cards/`, {
+      timeout: 5000
+    }).then(response => {
+      console.log(response, "response")
+      this.setState({
+        cards: response.data.template_cards
+      })
+    })
+  }
+
+  handleSelectCardClick(e) {
+    const card = e.target.closest('.single-element');
     let instance = axios.create({
       baseURL: window.baseURL
     });
@@ -42,16 +42,16 @@ class Body extends Component {
       timeout: 5000
     }).then(response => {
       console.log(response, "response of card data")
-      this.setState({
-        showConfirmCard: true,
-        showViewForm: false,
-        currentCard: response.data.template_card,
-        accountID: card.account_id,
-        APIName: card.git_repo_name,
-        templateDatumID: card.template_datum_id,
-        templateCardID: card.id,
-        currentStep: 1
-      })
+      const cardData = response.data.template_card;
+      let newStateVars = {
+        currentCard: cardData,
+        accountID: cardData.account_id,
+        APIName: cardData.git_repo_name,
+        templateDatumID: cardData.template_datum_id,
+        templateCardID: cardData.id
+      };
+      this.setState(newStateVars);
+      this.handleSelectConfirmCard(newStateVars.currentCard);
     })
   }
 
@@ -59,9 +59,7 @@ class Body extends Component {
     let js_script = document.createElement('script'),
       loaded;
     this.setState({
-      showViewForm: false,
-      currentStep: 2,
-      showSideBar: false
+      currentStep: 2
     });
     document.body.appendChild(js_script);
     js_script.onreadystatechange = js_script.onload = () => {
@@ -130,39 +128,46 @@ class Body extends Component {
   }
 
   handleGoBack(e) {
-    // this.setState({
-    //   showSideBar: true
-    // })
     location.reload(true);
   }
 
+  renderCardSelector() {
+    let cards = this.state.cards.map((card, i) => {
+      return (
+        <div  key={i} className="single-element" id={card.slug} onClick={this.handleSelectCardClick}>
+          <div className="card-type-icon" data-tooltip={card.name} data-position="bottom center">
+            <img src={card.icon_url} />
+          </div>
+        </div>
+      )
+    });
+    return (
+      <div className="ui main container">
+        <h4> Select a card type </h4>
+        <div className="protograph-toCardForm-cardsIconContainer">
+          {cards.length >= 0 && cards}
+        </div>
+      </div>
+    );
+  }
+
+  renderCardWYSIWYG() {
+    return (
+      <div className="proto-grey-body">
+        <div className="proto-container">
+          <button className ="ui button default-button" onClick={(e) => {this.handleGoBack(e)}}><i className="angle left icon"></i></button>
+        </div>
+        <div id="protograph_edit_form_holder">Loading</div>
+      </div>
+    )
+  }
+
   render() {
-    if (this.state.showSideBar) {
-      return (
-        <div className="card-creation-container ui grid">
-          {this.state.showSideBar ? <SideBar step={this.state.currentStep} onSelectCardClick={this.handleSelectCardClick} /> : ''}
-          <div className="thirteen wide column">
-            {this.state.showViewForm &&
-              <div className="display-area">
-                Select a card from sidebar
-              </div>
-            }
-            {
-              this.state.showConfirmCard &&
-                <ConfirmCard card={this.state.currentCard} onSelectConfirmClick={this.handleSelectConfirmCard} />
-            }
-          </div>
-        </div>
-      )
-    } else  {
-      return (
-        <div>
-          <div className="proto-container">
-            <button className ="ui button default-button" onClick={(e) => {this.handleGoBack(e)}}><i className="angle left icon"></i></button>
-          </div>
-          <div id="protograph_edit_form_holder">Loading</div>
-        </div>
-      )
+    switch(this.state.currentStep) {
+      case 1:
+        return this.renderCardSelector();
+      case 2:
+        return this.renderCardWYSIWYG();
     }
   }
 }
