@@ -114,28 +114,28 @@ class Body extends Component {
 
   renderCard(card){
     var x = this.getProtoInstance(card.git_repo_name);
-    x.init({
+    let options = {
       selector: document.querySelector('#protograph_edit_form_holder'),
       data_url: card.files.schema_files.sample,
       schema_url: card.files.schema_files.schema,
       configuration_url: card.files.configuration_sample,
       configuration_schema_url: card.files.configuration_schema
-    });
+    };
+    if (card.files.ui_schema) {
+      options.ui_schema_url = card.files.ui_schema
+    }
+    x.init(options);
     this.setState({
       protoGraphInstance : x
     });
     x.renderEdit((e) => {this.handlePublishClick(this)});
   }
 
-  handleGoBack(e) {
-    location.reload(true);
-  }
-
   renderCardSelector() {
     let cards = this.state.cards.map((card, i) => {
       return (
         <div  key={i} className="single-element" id={card.slug} onClick={this.handleSelectCardClick}>
-          <div className="card-type-icon" data-tooltip={card.name} data-position="bottom center">
+          <div className="card-type-icon" data-tooltip={`${card.account_slug} / ${card.name}`} data-position="bottom center">
             <img src={card.icon_url} />
           </div>
         </div>
@@ -154,9 +154,6 @@ class Body extends Component {
   renderCardWYSIWYG() {
     return (
       <div className="proto-grey-body">
-        <div className="proto-container">
-          <button className ="ui button default-button" onClick={(e) => {this.handleGoBack(e)}}><i className="angle left icon"></i></button>
-        </div>
         <div id="protograph_edit_form_holder">Loading</div>
       </div>
     )

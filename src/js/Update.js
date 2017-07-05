@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Steps from '../js/Steps';
-import UpdateButton from '../js/UpdateButton';
 import axios from 'axios';
 
 class Update extends Component {
@@ -37,13 +35,17 @@ class Update extends Component {
 
   renderUpdateCard(card) {
     let update_x = eval(`new ${card.git_repo_name}()`);
-    update_x.init({
+    let options = {
       selector: document.querySelector('#view_area'),
       data_url: window.viewCast.remote_urls.data_url,
       schema_url: window.viewCast.remote_urls.schema_json,
       configuration_url: window.viewCast.remote_urls.configuration_url,
       configuration_schema_url: window.viewCast.template_card.files.configuration_schema
-    });
+    }
+    if (window.viewCast.template_card.files.ui_schema) {
+      options.ui_schema_url = window.viewCast.template_card.files.ui_schema
+    }
+    update_x.init(options);
     this.setState({
       updatedInstance : update_x
     });

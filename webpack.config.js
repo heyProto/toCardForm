@@ -12,6 +12,11 @@ module.exports = {
       }
     })
   ],
+  externals: {
+    'react': 'React',
+    'react-dom': 'ReactDOM',
+    'axios': 'axios'
+  },
   node: {
     net: 'empty',
     tls: 'empty',
