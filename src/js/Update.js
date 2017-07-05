@@ -12,7 +12,8 @@ class Update extends Component {
       showUpdate: true,
       updatedInstance: null
     }
-    this.handleUpdateClick = this.handleUpdateClick.bind(this);
+    // this.handleUpdateClick = this.handleUpdateClick.bind(this);
+    this.handlePublishClick = this.handlePublishClick.bind(this);
   }
 
   componentDidMount() {
@@ -43,38 +44,54 @@ class Update extends Component {
       configuration_url: window.viewCast.remote_urls.configuration_url,
       configuration_schema_url: window.viewCast.template_card.files.configuration_schema
     });
-    update_x.renderEdit({
-      onLastStep: function() {
-        document.querySelector(".steps-area .update-button").style.display = "block";
-      },
-      notOnLastStep: function() {
-        document.querySelector(".steps-area .update-button").style.display = "none";
-      }
-    });
     this.setState({
       updatedInstance : update_x
     });
+    update_x.renderEdit((e) => {this.handlePublishClick(this)});
   }
 
 
-  handleUpdateClick() {
-    let putInstance =  axios.create({
+  // handleUpdateClick() {
+  //   let putInstance =  axios.create({
+  //     baseURL: window.baseURL
+  //   });
+  //   putInstance.defaults.headers['Access-Token'] = window.accessToken;
+  //   putInstance.defaults.headers['Content-Type'] = 'application/json';
+  //   putInstance.put(`${window.baseURL}/accounts/${window.accountSlug}/datacasts/${window.viewCast.id}`, {
+  //     "datacast": this.state.updatedInstance.getData().dataJSON,
+  //     "view_cast": {
+  //       "account_id": this.state.accountID,
+  //       "template_datum_id": this.state.templateDatumID,
+  //       "name": this.state.APIName,
+  //       "template_card_id": this.state.templateCardID,
+  //       "seo_blockquote": (typeof(this.state.updatedInstance.renderSEO) == "function") ? this.state.updatedInstance.renderSEO() : "",
+  //       "optionalConfigJSON": JSON.stringify(this.state.updatedInstance.getData().optionalConfigJSON)
+  //     }
+  //   }).then(response => {
+  //     console.log(response, "put response");
+  //     window.location.href = response.data.redirect_path;
+  //   })
+  // }
+
+  handlePublishClick(toCardFormInstance) {
+    let postInstance = axios.create({
       baseURL: window.baseURL
     });
-    putInstance.defaults.headers['Access-Token'] = window.accessToken;
-    putInstance.defaults.headers['Content-Type'] = 'application/json';
-    putInstance.put(`${window.baseURL}/accounts/${window.accountSlug}/datacasts/${window.viewCast.id}`, {
-      "datacast": this.state.updatedInstance.getData().dataJSON,
+    let postData = toCardFormInstance.state.updatedInstance.getData();
+    postInstance.defaults.headers['Access-Token'] = window.accessToken;
+    postInstance.defaults.headers['Content-Type'] = 'application/json';
+    postInstance.put(`${window.baseURL}/accounts/${window.accountSlug}/datacasts/${window.viewCast.id}`, {
+      "datacast": postData.dataJSON,
       "view_cast": {
-        "account_id": this.state.accountID,
-        "template_datum_id": this.state.templateDatumID,
-        "name": this.state.APIName,
-        "template_card_id": this.state.templateCardID,
-        "seo_blockquote": (typeof(this.state.updatedInstance.renderSEO) == "function") ? this.state.updatedInstance.renderSEO() : "",
-        "optionalConfigJSON": JSON.stringify(this.state.updatedInstance.getData().optionalConfigJSON)
+        "account_id": toCardFormInstance.state.accountID,
+        "template_datum_id": toCardFormInstance.state.templateDatumID,
+        "name": postData.name,
+        "template_card_id": toCardFormInstance.state.templateCardID,
+        "seo_blockquote": (typeof(toCardFormInstance.state.updatedInstance.renderSEO) == "function") ? this.state.updatedInstance.renderSEO() : "",
+        "optionalConfigJSON": JSON.stringify(postData.optionalConfigJSON)
       }
     }).then(response => {
-      console.log(response, "put response");
+      console.log(response, "put response")
       window.location.href = response.data.redirect_path;
     })
   }
@@ -84,7 +101,6 @@ class Update extends Component {
       <div className="card-update-container ui grid">
         <div className="steps-area sixteen wide column">
           <div id="view_area" className="selected-card-preview"></div>
-          <UpdateButton onUpdateClick={this.handleUpdateClick}/>
         </div>
       </div>
     )
