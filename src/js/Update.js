@@ -49,7 +49,7 @@ class Update extends Component {
     this.setState({
       updatedInstance : update_x
     });
-    update_x.renderEdit((e) => {this.handlePublishClick(this)});
+    update_x.renderEdit(this.handlePublishClick);
   }
 
 
@@ -75,27 +75,30 @@ class Update extends Component {
   //   })
   // }
 
-  handlePublishClick(toCardFormInstance) {
+  handlePublishClick() {
     let postInstance = axios.create({
       baseURL: window.baseURL
     });
-    let postData = toCardFormInstance.state.updatedInstance.getData();
+    let postData = this.state.updatedInstance.getData();
     postInstance.defaults.headers['Access-Token'] = window.accessToken;
     postInstance.defaults.headers['Content-Type'] = 'application/json';
-    postInstance.put(`${window.baseURL}/accounts/${window.accountSlug}/datacasts/${window.viewCast.id}`, {
+    return postInstance.put(`${window.baseURL}/accounts/${window.accountSlug}/datacasts/${window.viewCast.id}`, {
       "datacast": postData.dataJSON,
       "view_cast": {
-        "account_id": toCardFormInstance.state.accountID,
-        "template_datum_id": toCardFormInstance.state.templateDatumID,
+        "account_id": this.state.accountID,
+        "template_datum_id": this.state.templateDatumID,
         "name": postData.name,
-        "template_card_id": toCardFormInstance.state.templateCardID,
-        "seo_blockquote": (typeof(toCardFormInstance.state.updatedInstance.renderSEO) == "function") ? this.state.updatedInstance.renderSEO() : "",
+        "template_card_id": this.state.templateCardID,
+        "seo_blockquote": (typeof(this.state.updatedInstance.renderSEO) == "function") ? this.state.updatedInstance.renderSEO() : "",
         "optionalConfigJSON": JSON.stringify(postData.optionalConfigJSON)
       }
     }).then(response => {
       console.log(response, "put response")
       window.location.href = response.data.redirect_path;
-    })
+    }).catch(reject => {
+      const errorMessages = reject.response.data.error_message;
+      showAllValidationErrors(errorMessages);
+    });
   }
 
   render() {

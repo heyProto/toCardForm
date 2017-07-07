@@ -75,27 +75,31 @@ class Body extends Component {
     document.head.appendChild(css_script);
   }
 
-  handlePublishClick(toCardFormInstance) {
+  handlePublishClick() {
     let postInstance = axios.create({
       baseURL: window.baseURL
     });
-    let postData = toCardFormInstance.state.protoGraphInstance.getData();
+
+    let postData = this.state.protoGraphInstance.getData();
     postInstance.defaults.headers['Access-Token'] = window.accessToken;
     postInstance.defaults.headers['Content-Type'] = 'application/json';
-    postInstance.post(`${window.baseURL}/accounts/${window.accountSlug}/datacasts`, {
+    return postInstance.post(`${window.baseURL}/accounts/${window.accountSlug}/datacasts`, {
       "datacast": postData.dataJSON,
       "view_cast": {
-        "account_id": toCardFormInstance.state.accountID,
-        "template_datum_id": toCardFormInstance.state.templateDatumID,
+        "account_id": this.state.accountID,
+        "template_datum_id": this.state.templateDatumID,
         "name": postData.name,
-        "template_card_id": toCardFormInstance.state.templateCardID,
-        "seo_blockquote": (typeof(toCardFormInstance.state.protoGraphInstance.renderSEO) == "function") ? toCardFormInstance.state.protoGraphInstance.renderSEO() : "",
+        "template_card_id": this.state.templateCardID,
+        "seo_blockquote": (typeof(this.state.protoGraphInstance.renderSEO) == "function") ? this.state.protoGraphInstance.renderSEO() : "",
         "optionalConfigJSON": JSON.stringify(postData.optionalConfigJSON)
       }
     }).then(response => {
       console.log(response, "post response")
       window.location.href = response.data.redirect_path;
-    })
+    }).catch(reject => {
+      const errorMessages = reject.response.data.error_message;
+      showAllValidationErrors(errorMessages);
+    });
   }
 
   getProtoInstance(instanceString) {
@@ -128,7 +132,7 @@ class Body extends Component {
     this.setState({
       protoGraphInstance : x
     });
-    x.renderEdit((e) => {this.handlePublishClick(this)});
+    x.renderEdit(this.handlePublishClick);
   }
 
   renderCardSelector() {
