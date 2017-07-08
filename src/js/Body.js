@@ -79,7 +79,6 @@ class Body extends Component {
     let postInstance = axios.create({
       baseURL: window.baseURL
     });
-
     let postData = this.state.protoGraphInstance.getData();
     postInstance.defaults.headers['Access-Token'] = window.accessToken;
     postInstance.defaults.headers['Content-Type'] = 'application/json';
@@ -97,8 +96,13 @@ class Body extends Component {
       console.log(response, "post response")
       window.location.href = response.data.redirect_path;
     }).catch(reject => {
+      _errs.push(reject);
       const errorMessages = reject.response.data.error_message;
-      showAllValidationErrors(errorMessages);
+      if (errorMessages) {
+        showAllValidationErrors(errorMessages);
+      } else {
+        generate_notify({text: reject.response.statusText, notify: "error"});
+      }
     });
   }
 

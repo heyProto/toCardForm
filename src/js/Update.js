@@ -96,8 +96,13 @@ class Update extends Component {
       console.log(response, "put response")
       window.location.href = response.data.redirect_path;
     }).catch(reject => {
+      _errs.push(reject);
       const errorMessages = reject.response.data.error_message;
-      showAllValidationErrors(errorMessages);
+      if (errorMessages) {
+        showAllValidationErrors(errorMessages);
+      } else {
+        generate_notify({text: reject.response.statusText, notify: "error"});
+      }
     });
   }
 
