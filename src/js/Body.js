@@ -96,7 +96,9 @@ class Body extends Component {
       console.log(response, "post response")
       window.location.href = response.data.redirect_path;
     }).catch(reject => {
-      _errs.push(reject);
+      if(typeof(_errs) !== 'undefined'){
+        _errs.push(reject);
+      }
       const errorMessages = reject.response.data.error_message;
       if (errorMessages) {
         showAllValidationErrors(errorMessages);
