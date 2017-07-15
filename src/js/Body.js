@@ -116,9 +116,9 @@ class Body extends Component {
       case 'ProtoGraph.Card.toExplain':
         return new ProtoGraph.Card.toExplain();
         break;
-      // case 'ProtoGraph.Card.toQuiz':
-      //   return new ProtoGraph.Card.toQuiz();
-      //   break;
+      case 'ProtoGraph.Card.toQuiz':
+        return new ProtoGraph.Card.toQuiz();
+        break;
     }
   }
 
@@ -133,6 +133,9 @@ class Body extends Component {
     };
     if (card.files.ui_schema) {
       options.ui_schema_url = card.files.ui_schema
+    }
+    if (card.files.base_url) {
+      options.base_url = card.files.base_url
     }
     x.init(options);
     this.setState({
