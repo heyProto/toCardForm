@@ -33,8 +33,25 @@ class Update extends Component {
     document.head.appendChild(css_script);
   }
 
+  getProtoInstance(instanceString) {
+    switch (instanceString) {
+      case 'ProtoGraph.Card.toSocial':
+        return new ProtoGraph.Card.toSocial();
+        break;
+      case 'ProtoGraph.Card.toExplain':
+        return new ProtoGraph.Card.toExplain();
+        break;
+      case 'ProtoGraph.Card.toQuiz':
+        return new ProtoGraph.Card.toQuiz();
+        break;
+      case 'ProtoGraph.Card.toMobJustice':
+        return new ProtoGraph.Card.toMobJustice();
+        break;
+    }
+  }
+
   renderUpdateCard(card) {
-    let update_x = eval(`new ${card.git_repo_name}()`);
+    let update_x = this.getProtoInstance(card.git_repo_name);
     let options = {
       selector: document.querySelector('#view_area'),
       data_url: window.viewCast.remote_urls.data_url,

@@ -119,6 +119,9 @@ class Body extends Component {
       case 'ProtoGraph.Card.toQuiz':
         return new ProtoGraph.Card.toQuiz();
         break;
+      case 'ProtoGraph.Card.toMobJustice':
+        return new ProtoGraph.Card.toMobJustice();
+        break;
     }
   }
 
