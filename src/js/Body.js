@@ -122,6 +122,12 @@ class Body extends Component {
       case 'ProtoGraph.Card.toMobJustice':
         return new ProtoGraph.Card.toMobJustice();
         break;
+      case 'ProtoGraph.Card.toStoryLink':
+        return new ProtoGraph.Card.toStoryLink();
+        break;
+      case 'ProtoGraph.Card.toTweet':
+        return new ProtoGraph.Card.toTweet();
+        break;
     }
   }
 
