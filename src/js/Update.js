@@ -44,8 +44,8 @@ class Update extends Component {
       case 'ProtoGraph.Card.toQuiz':
         return new ProtoGraph.Card.toQuiz();
         break;
-      case 'ProtoGraph.Card.toMobJustice':
-        return new ProtoGraph.Card.toMobJustice();
+      case 'ProtoGraph.Card.toReportViolence':
+        return new ProtoGraph.Card.toReportViolence();
         break;
       case 'ProtoGraph.Card.toStoryLink':
         return new ProtoGraph.Card.toStoryLink();
