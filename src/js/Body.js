@@ -19,9 +19,15 @@ class Body extends Component {
     let instance = axios.create({
       baseURL: window.baseURL
     });
-    instance.defaults.headers['Access-Token'] = window.accessToken;
-    instance.defaults.headers['Content-Type'] = 'application/json';
-    instance.get(`${window.baseURL}/accounts/${window.accountSlug}/template_cards/`, {
+    let configs = {
+      headers: {
+        'Access-Token': window.accessToken,
+        'Content-Type': 'application/json'
+      }
+    }
+    // instance.defaults.headers['Access-Token'] = window.accessToken;
+    // instance.defaults.headers['Content-Type'] = 'application/json';
+    instance.get(`${window.baseURL}/accounts/${window.accountSlug}/template_cards/`, configs, {
       timeout: 5000
     }).then(response => {
       console.log(response, "response")
@@ -36,9 +42,15 @@ class Body extends Component {
     let instance = axios.create({
       baseURL: window.baseURL
     });
-    instance.defaults.headers['Access-Token'] = window.accessToken;
-    instance.defaults.headers['Content-Type'] = 'application/json';
-    instance.get(`${window.baseURL}/accounts/${window.accountSlug}/template_cards/${card.id}`, {
+    let configs = {
+      headers: {
+        'Access-Token': window.accessToken,
+        'Content-Type': 'application/json'
+      }
+    }
+    // instance.defaults.headers['Access-Token'] = window.accessToken;
+    // instance.defaults.headers['Content-Type'] = 'application/json';
+    instance.get(`${window.baseURL}/accounts/${window.accountSlug}/template_cards/${card.id}`, configs, {
       timeout: 5000
     }).then(response => {
       console.log(response, "response of card data")
@@ -80,9 +92,15 @@ class Body extends Component {
       baseURL: window.baseURL
     });
     let postData = this.state.protoGraphInstance.getData();
-    postInstance.defaults.headers['Access-Token'] = window.accessToken;
-    postInstance.defaults.headers['Content-Type'] = 'application/json';
-    return postInstance.post(`${window.baseURL}/accounts/${window.accountSlug}/datacasts`, {
+    let configs = {
+      headers: {
+        'Access-Token': window.accessToken,
+        'Content-Type': 'application/json'
+      }
+    }
+    // postInstance.defaults.headers['Access-Token'] = window.accessToken;
+    // postInstance.defaults.headers['Content-Type'] = 'application/json';
+    return postInstance.post(`${window.baseURL}/accounts/${window.accountSlug}/datacasts`, configs, {
       "datacast": postData.dataJSON,
       "view_cast": {
         "account_id": this.state.accountID,
