@@ -122,8 +122,8 @@ class Body extends Component {
       case 'ProtoGraph.Card.toReportViolence':
         return new ProtoGraph.Card.toReportViolence();
         break;
-      case 'ProtoGraph.Card.toStoryLink':
-        return new ProtoGraph.Card.toStoryLink();
+      case 'ProtoGraph.Card.toLink':
+        return new ProtoGraph.Card.toLink();
         break;
       case 'ProtoGraph.Card.toTweet':
         return new ProtoGraph.Card.toTweet();
