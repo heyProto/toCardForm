@@ -50,6 +50,9 @@ class Update extends Component {
       case 'ProtoGraph.Card.toLink':
         return new ProtoGraph.Card.toLink();
         break;
+      case 'ProtoGraph.Card.toStoryLink':
+        return new ProtoGraph.Card.toStoryLink();
+        break;
       case 'ProtoGraph.Card.toTweet':
         return new ProtoGraph.Card.toTweet();
         break;

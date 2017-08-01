@@ -92,15 +92,15 @@ class Body extends Component {
       baseURL: window.baseURL
     });
     let postData = this.state.protoGraphInstance.getData();
-    let configs = {
-      headers: {
-        'Access-Token': window.accessToken,
-        'Content-Type': 'application/json'
-      }
-    }
-    // postInstance.defaults.headers['Access-Token'] = window.accessToken;
-    // postInstance.defaults.headers['Content-Type'] = 'application/json';
-    return postInstance.post(`${window.baseURL}/accounts/${window.accountSlug}/datacasts`, configs, {
+    // let configs = {
+    //   headers: {
+    //     'Access-Token': window.accessToken,
+    //     'Content-Type': 'application/json'
+    //   }
+    // }
+    postInstance.defaults.headers['Access-Token'] = window.accessToken;
+    postInstance.defaults.headers['Content-Type'] = 'application/json';
+    return postInstance.post(`${window.baseURL}/accounts/${window.accountSlug}/datacasts`, {
       "datacast": postData.dataJSON,
       "view_cast": {
         "account_id": this.state.accountID,
@@ -142,6 +142,9 @@ class Body extends Component {
         break;
       case 'ProtoGraph.Card.toLink':
         return new ProtoGraph.Card.toLink();
+        break;
+      case 'ProtoGraph.Card.toStoryLink':
+        return new ProtoGraph.Card.toStoryLink();
         break;
       case 'ProtoGraph.Card.toTweet':
         return new ProtoGraph.Card.toTweet();
