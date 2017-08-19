@@ -100,7 +100,7 @@ class Body extends Component {
     // }
     postInstance.defaults.headers['Access-Token'] = window.accessToken;
     postInstance.defaults.headers['Content-Type'] = 'application/json';
-    return postInstance.post(`${window.baseURL}/accounts/${window.accountSlug}/datacasts`, {
+    return postInstance.post(`${window.baseURL}/accounts/${window.accountSlug}/folders/${window.folderSlug}/datacasts`, {
       "datacast": postData.dataJSON,
       "view_cast": {
         "account_id": this.state.accountID,
@@ -159,13 +159,13 @@ class Body extends Component {
     var x = this.getProtoInstance(card.git_repo_name);
     let options = {
       selector: document.querySelector('#protograph_edit_form_holder'),
-      data_url: card.files.schema_files.sample,
-      schema_url: card.files.schema_files.schema,
-      configuration_url: card.files.configuration_sample,
-      configuration_schema_url: card.files.configuration_schema
+      data_url: card.files.schema_files.sample + "?no-cache=true",
+      schema_url: card.files.schema_files.schema + "?no-cache=true",
+      configuration_url: card.files.configuration_sample + "?no-cache=true",
+      configuration_schema_url: card.files.configuration_schema + "?no-cache=true"
     };
     if (card.files.ui_schema) {
-      options.ui_schema_url = card.files.ui_schema
+      options.ui_schema_url = card.files.ui_schema + "?no-cache=true"
     }
     if (card.files.base_url) {
       options.base_url = card.files.base_url
