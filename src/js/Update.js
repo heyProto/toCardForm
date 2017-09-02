@@ -56,6 +56,9 @@ class Update extends Component {
       case 'ProtoGraph.Card.toTweet':
         return new ProtoGraph.Card.toTweet();
         break;
+      case 'ProtoGraph.Card.toTimeline':
+        return new ProtoGraph.Card.toTimeline();
+        break;
       case 'ProtoGraph.Card.toAudioPhoto':
         return new ProtoGraph.Card.toAudioPhoto();
         break;
@@ -66,13 +69,13 @@ class Update extends Component {
     let update_x = this.getProtoInstance(card.git_repo_name);
     let options = {
       selector: document.querySelector('#view_area'),
-      data_url: window.viewCast.remote_urls.data_url,
-      schema_url: window.viewCast.remote_urls.schema_json,
-      configuration_url: window.viewCast.remote_urls.configuration_url,
-      configuration_schema_url: window.viewCast.template_card.files.configuration_schema
+      data_url: window.viewCast.remote_urls.data_url + "?no-cache=true",
+      schema_url: window.viewCast.remote_urls.schema_json + "?no-cache=true",
+      configuration_url: window.viewCast.remote_urls.configuration_url + "?no-cache=true",
+      configuration_schema_url: window.viewCast.template_card.files.configuration_schema + "?no-cache=true"
     }
     if (window.viewCast.template_card.files.ui_schema) {
-      options.ui_schema_url = window.viewCast.template_card.files.ui_schema
+      options.ui_schema_url = window.viewCast.template_card.files.ui_schema + "?no-cache=true"
     }
     if (window.viewCast.template_card.files.base_url) {
       options.base_url = window.viewCast.template_card.files.base_url
@@ -114,7 +117,7 @@ class Update extends Component {
     let postData = this.state.updatedInstance.getData();
     postInstance.defaults.headers['Access-Token'] = window.accessToken;
     postInstance.defaults.headers['Content-Type'] = 'application/json';
-    return postInstance.put(`${window.baseURL}/accounts/${window.accountSlug}/datacasts/${window.viewCast.id}`, {
+    return postInstance.put(`${window.baseURL}/accounts/${window.accountSlug}/folders/${window.folderSlug}/datacasts/${window.viewCast.id}`, {
       "datacast": postData.dataJSON,
       "view_cast": {
         "account_id": this.state.accountID,
