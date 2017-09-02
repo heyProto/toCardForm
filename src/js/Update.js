@@ -56,6 +56,9 @@ class Update extends Component {
       case 'ProtoGraph.Card.toTweet':
         return new ProtoGraph.Card.toTweet();
         break;
+      case 'ProtoGraph.Card.toAudioPhoto':
+        return new ProtoGraph.Card.toAudioPhoto();
+        break;
     }
   }
 
