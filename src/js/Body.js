@@ -143,17 +143,14 @@ class Body extends Component {
       case 'ProtoGraph.Card.toLink':
         return new ProtoGraph.Card.toLink();
         break;
-      case 'ProtoGraph.Card.toStoryLink':
-        return new ProtoGraph.Card.toStoryLink();
-        break;
-      case 'ProtoGraph.Card.toTweet':
-        return new ProtoGraph.Card.toTweet();
-        break;
       case 'ProtoGraph.Card.toTimeline':
         return new ProtoGraph.Card.toTimeline();
         break;
       case 'ProtoGraph.Card.toAudioPhoto':
         return new ProtoGraph.Card.toAudioPhoto();
+        break;
+      case 'ProtoGraph.Card.toReportJournalistKilling':
+        return new ProtoGraph.Card.toReportJournalistKilling();
         break;
     }
   }
