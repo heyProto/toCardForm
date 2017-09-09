@@ -12,16 +12,6 @@ body{
   display: none;
 }
 
-.card-creation-container, .card-update-container{
-  margin-left: auto;
-  margin-right: auto;
-  /*margin-top: 50px;*/
-  margin-bottom: 50px;
-  border: 1px solid #efefef;
-  height: 700px;
-  overflow: auto;
-}
-
 .clearfix {
   clear: both;
 }
