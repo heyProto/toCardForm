@@ -59,6 +59,9 @@ class Update extends Component {
       case 'ProtoGraph.Card.toReportJournalistKilling':
         return new ProtoGraph.Card.toReportJournalistKilling();
         break;
+      case 'ProtoGraph.Card.toDistrictProfile':
+        return new ProtoGraph.Card.toDistrictProfile();
+        break;
     }
   }
 
