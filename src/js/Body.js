@@ -202,9 +202,7 @@ class Body extends Component {
 
   renderCardWYSIWYG() {
     return (
-      <div className="proto-grey-body">
         <div id="protograph_edit_form_holder">Loading</div>
-      </div>
     )
   }
 

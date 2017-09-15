@@ -145,7 +145,7 @@ class Update extends Component {
 
   render() {
     return (
-      <div className="card-update-container ui grid">
+      <div className="ui grid">
         <div className="steps-area sixteen wide column">
           <div id="view_area" className="selected-card-preview"></div>
         </div>
