@@ -155,6 +155,21 @@ class Body extends Component {
       case 'ProtoGraph.Card.toDistrictProfile':
         return new ProtoGraph.Card.toDistrictProfile();
         break;
+      case 'ProtoGraph.Card.toRainfall':
+        return new ProtoGraph.Card.toRainfall();
+        break;
+      case 'ProtoGraph.Card.toWaterExploitation':
+        return new ProtoGraph.Card.toWaterExploitation();
+        break;
+      case 'ProtoGraph.Card.toLandUse':
+        return new ProtoGraph.Card.toLandUse();
+        break;
+      case 'ProtoGraph.Card.toWell':
+        return new ProtoGraph.Card.toWell();
+        break;
+      case 'ProtoGraph.Card.toPoliticalLeadership':
+        return new ProtoGraph.Card.toPoliticalLeadership();
+        break;
     }
   }
 
