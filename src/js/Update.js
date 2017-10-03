@@ -84,9 +84,9 @@ class Update extends Component {
     let update_x = this.getProtoInstance(card.git_repo_name);
     let options = {
       selector: document.querySelector('#view_area'),
-      data_url: window.viewCast.remote_urls.data_url,
+      data_url: window.viewCast.remote_urls.data_url + "?no-cache=" + (new Date()).toJSON(),
       schema_url: window.viewCast.remote_urls.schema_json + "?no-cache=true",
-      configuration_url: window.viewCast.remote_urls.configuration_url,
+      configuration_url: window.viewCast.remote_urls.configuration_url + "?no-cache=" + (new Date()).toJSON(),
       configuration_schema_url: window.viewCast.template_card.files.configuration_schema + "?no-cache=true"
     }
     if (window.viewCast.template_card.files.ui_schema) {
