@@ -22,6 +22,10 @@ class Update extends Component {
     js_script.onreadystatechange = js_script.onload = () => {
       if(!loaded) {
         this.renderUpdateCard(card);
+        var imageBankButton = document.getElementById('protograph_image_bank_button');
+        if(imageBankButton) {
+          imageBankButton.style.display = 'block';
+        }
       }
       loaded = true;
     };
