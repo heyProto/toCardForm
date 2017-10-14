@@ -170,6 +170,9 @@ class Body extends Component {
       case 'ProtoGraph.Card.toPoliticalLeadership':
         return new ProtoGraph.Card.toPoliticalLeadership();
         break;
+      case 'ProtoGraph.Card.toMoveToANewCity()':
+        return new ProtoGraph.Card.toMoveToANewCity();
+        break;
     }
   }
 
