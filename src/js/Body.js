@@ -196,6 +196,9 @@ class Body extends Component {
     if (card.files.base_url) {
       options.base_url = card.files.base_url
     }
+    if (window.houseColors) {
+      options.houseColors = window.houseColors
+    }
     x.init(options);
     this.setState({
       protoGraphInstance : x
