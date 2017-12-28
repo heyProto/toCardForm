@@ -102,6 +102,9 @@ class Update extends Component {
     if (window.viewCast.template_card.files.base_url) {
       options.base_url = window.viewCast.template_card.files.base_url
     }
+    if (window.houseColors) {
+      options.houseColors = window.houseColors
+    }
     update_x.init(options);
     this.setState({
       updatedInstance : update_x
