@@ -187,6 +187,9 @@ class Body extends Component {
       case 'ProtoGraph.Card.toCompanyProfile':
         return new ProtoGraph.Card.toCompanyProfile();
         break;
+      case 'ProtoGraph.Card.toStory':
+        return new ProtoGraph.Card.toStory();
+        break;
     }
   }
 
