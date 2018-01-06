@@ -87,6 +87,12 @@ class Update extends Component {
       case 'ProtoGraph.Card.toCluster':
         return new ProtoGraph.Card.toCluster();
         break;
+      case 'ProtoGraph.Card.toQuestion':
+        return new ProtoGraph.Card.toQuestion();
+        break;
+      case 'ProtoGraph.Card.toCompanyProfile':
+        return new ProtoGraph.Card.toCompanyProfile();
+        break;
       case 'ProtoGraph.Card.toStory':
         return new ProtoGraph.Card.toStory();
         break;
