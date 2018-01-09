@@ -96,6 +96,9 @@ class Update extends Component {
       case 'ProtoGraph.Card.toStory':
         return new ProtoGraph.Card.toStory();
         break;
+      case 'ProtoGraph.Card.toMedia':
+        return new ProtoGraph.Card.toMedia();
+        break;
     }
   }
 
