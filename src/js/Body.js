@@ -199,6 +199,9 @@ class Body extends Component {
       case 'ProtoGraph.Card.toGrid':
         return new ProtoGraph.Card.toGrid();
         break;
+      case 'ProtoGraph.Card.toSurveyScores':
+        return new ProtoGraph.Card.toSurveyScores();
+        break;
     }
   }
 
