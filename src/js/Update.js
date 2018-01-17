@@ -132,6 +132,9 @@ class Update extends Component {
     if (window.houseColors) {
       options.houseColors = window.houseColors
     }
+    if (window.viewCast.template_card.name == "toManualScavengerCoverVizCard"){
+      options.topo_url = card.files.base_url + "/topo.json";
+    }
     update_x.init(options);
     this.setState({
       updatedInstance : update_x
