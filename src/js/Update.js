@@ -111,6 +111,9 @@ class Update extends Component {
       case 'ProtoGraph.Card.toManualScavengerCoverVizCard':
         return new ProtoGraph.Card.toManualScavengerCoverVizCard();
         break;
+      case 'ProtoGraph.Card.ComposeCard':
+        return new ProtoGraph.Card.ComposeCard();
+        break;
     }
   }
 
