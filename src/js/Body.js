@@ -27,7 +27,7 @@ class Body extends Component {
     }
     // instance.defaults.headers['Access-Token'] = window.accessToken;
     // instance.defaults.headers['Content-Type'] = 'application/json';
-    instance.get(`${window.baseURL}/accounts/${window.accountSlug}/template_cards/`, configs, {
+    instance.get(`${window.baseURL}/accounts/${window.accountSlug}/folders/${window.folderSlug}/template_cards/`, configs, {
       timeout: 5000
     }).then(response => {
       console.log(response, "response")
@@ -50,7 +50,7 @@ class Body extends Component {
     }
     // instance.defaults.headers['Access-Token'] = window.accessToken;
     // instance.defaults.headers['Content-Type'] = 'application/json';
-    instance.get(`${window.baseURL}/accounts/${window.accountSlug}/template_cards/${card.id}`, configs, {
+    instance.get(`${window.baseURL}/accounts/${window.accountSlug}/folders/${window.folderSlug}/template_cards/${card.id}`, configs, {
       timeout: 5000
     }).then(response => {
       console.log(response, "response of card data")
