@@ -114,6 +114,10 @@ class Update extends Component {
       case 'ProtoGraph.Card.ComposeCard':
         return new ProtoGraph.Card.ComposeCard();
         break;
+      case 'ProtoGraph.Card.toImage':
+        return new ProtoGraph.Card.toImage();
+      case 'ProtoGraph.Card.VideoYoutube':
+        return new ProtoGraph.Card.VideoYoutube();
     }
   }
 
