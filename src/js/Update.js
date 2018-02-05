@@ -108,8 +108,8 @@ class Update extends Component {
       case 'ProtoGraph.Card.toSurveyScores':
         return new ProtoGraph.Card.toSurveyScores();
         break;
-      case 'ProtoGraph.Card.toManualScavengerCoverVizCard':
-        return new ProtoGraph.Card.toManualScavengerCoverVizCard();
+      case 'ProtoGraph.Card.toStinkCoverVizCard':
+        return new ProtoGraph.Card.toStinkCoverVizCard();
         break;
       case 'ProtoGraph.Card.ComposeCard':
         return new ProtoGraph.Card.ComposeCard();
