@@ -233,9 +233,6 @@ class Body extends Component {
     if (window.houseColors) {
       options.houseColors = window.houseColors
     }
-    if (card.name == "toManualScavengerCoverVizCard"){
-      options.topo_url = card.files.base_url + "/topo.json";
-    }
     x.init(options);
     this.setState({
       protoGraphInstance : x
