@@ -118,6 +118,8 @@ class Update extends Component {
         return new ProtoGraph.Card.toImage();
       case 'ProtoGraph.Card.VideoYoutube':
         return new ProtoGraph.Card.toVideoYoutube();
+      case 'ProtoGraph.Card.VideoJWPlayer':
+        return new ProtoGraph.Card.toVideoJWPlayer();
     }
   }
 
