@@ -138,8 +138,8 @@ class Update extends Component {
     if (window.viewCast.template_card.files.base_url) {
       options.base_url = window.viewCast.template_card.files.base_url
     }
-    if (window.houseColors) {
-      options.houseColors = window.houseColors
+    if (window.site_config_url) {
+      options.site_config_url = window.site_config_url
     }
     update_x.init(options);
     this.setState({

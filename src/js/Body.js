@@ -232,8 +232,8 @@ class Body extends Component {
     if (card.files.base_url) {
       options.base_url = card.files.base_url
     }
-    if (window.houseColors) {
-      options.houseColors = window.houseColors
+    if (window.site_config_url) {
+      options.site_config_url = window.site_config_url
     }
     x.init(options);
     this.setState({
