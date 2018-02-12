@@ -142,6 +142,9 @@ class Update extends Component {
     if (window.houseColors) {
       options.houseColors = window.houseColors
     }
+    if (window.site_config_url) {
+      options.site_config_url = window.site_config_url
+    }
     update_x.init(options);
     this.setState({
       updatedInstance : update_x
