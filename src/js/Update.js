@@ -118,16 +118,9 @@ class Update extends Component {
         return new ProtoGraph.Card.toImage();
       case 'ProtoGraph.Card.VideoYoutube':
         return new ProtoGraph.Card.toVideoYoutube();
-      case 'ProtoGraph.Card.toVideoJWPlayer':
-        return new ProtoGraph.Card.toVideoJWPlayer();
-      // case 'ProtoGraph.Card.toDataIRBFGrid':
-      //   return new ProtoGraph.Card.toDataIRBFGrid(); 
-      // case 'ProtoGraph.Card.toDataIRBFTooltip':
-      //   return new ProtoGraph.Card.toDataIRBFTooltip();   
-      // case 'ProtoGraph.Card.toDataRatingWithDrillDown':
-      //   return new  ProtoGraph.Card.toDataRatingWithDrillDown();
-      case 'ProtoGraph.Card.toProfile':
-        return new  ProtoGraph.Card.toProfile();
+      case 'ProtoGraph.Card.toOrganCoverVizCard':
+        return new ProtoGraph.Card.toOrganCoverVizCard();
+        break;
     }
   }
 
@@ -146,8 +139,8 @@ class Update extends Component {
     if (window.viewCast.template_card.files.base_url) {
       options.base_url = window.viewCast.template_card.files.base_url
     }
-    if (window.site_config_url) {
-      options.site_config_url = window.site_config_url
+    if (window.houseColors) {
+      options.houseColors = window.houseColors
     }
     update_x.init(options);
     this.setState({
