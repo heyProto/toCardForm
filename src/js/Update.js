@@ -118,6 +118,14 @@ class Update extends Component {
         return new ProtoGraph.Card.toImage();
       case 'ProtoGraph.Card.VideoYoutube':
         return new ProtoGraph.Card.toVideoYoutube();
+      case 'ProtoGraph.Card.toDataIRBFGrid':
+        return new ProtoGraph.Card.toDataIRBFGrid(); 
+      case 'ProtoGraph.Card.toDataIRBFTooltip':
+        return new ProtoGraph.Card.toDataIRBFTooltip();   
+      case 'ProtoGraph.Card.toDataRatingWithDrillDown':
+        return new  ProtoGraph.Card.toDataRatingWithDrillDown();
+      case 'ProtoGraph.Card.toProfile':
+        return new  ProtoGraph.Card.toProfile();
       case 'ProtoGraph.Card.toOrganCoverVizCard':
         return new ProtoGraph.Card.toOrganCoverVizCard();
         break;
