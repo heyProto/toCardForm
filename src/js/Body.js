@@ -224,6 +224,8 @@ class Body extends Component {
         return new  ProtoGraph.Card.toProfile();
       case 'ProtoGraph.Card.toOrganCoverVizCard':
         return new ProtoGraph.Card.toOrganCoverVizCard();
+      case 'ProtoGraph.Card.toEducationDistrictMap':
+        return new ProtoGraph.Card.toEducationDistrictMap();
     }
   }
 

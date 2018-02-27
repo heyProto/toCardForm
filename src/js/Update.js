@@ -129,6 +129,8 @@ class Update extends Component {
       case 'ProtoGraph.Card.toOrganCoverVizCard':
         return new ProtoGraph.Card.toOrganCoverVizCard();
         break;
+      case 'ProtoGraph.Card.toEducationDistrictMap':
+        return new ProtoGraph.Card.toEducationDistrictMap();
     }
   }
 
