@@ -215,9 +215,9 @@ class Body extends Component {
       case 'ProtoGraph.Card.toVideoJWPlayer':
         return new ProtoGraph.Card.toVideoJWPlayer();
       case 'ProtoGraph.Card.toDataIRBFGrid':
-        return new ProtoGraph.Card.toDataIRBFGrid(); 
+        return new ProtoGraph.Card.toDataIRBFGrid();
       case 'ProtoGraph.Card.toDataIRBFTooltip':
-        return new ProtoGraph.Card.toDataIRBFTooltip();   
+        return new ProtoGraph.Card.toDataIRBFTooltip();
       case 'ProtoGraph.Card.toDataRatingWithDrillDown':
         return new  ProtoGraph.Card.toDataRatingWithDrillDown();
       case 'ProtoGraph.Card.toProfile':
@@ -226,6 +226,8 @@ class Body extends Component {
         return new ProtoGraph.Card.toOrganCoverVizCard();
       case 'ProtoGraph.Card.toEducationDistrictMap':
         return new ProtoGraph.Card.toEducationDistrictMap();
+      case 'ProtoGraph.Card.HTMLCard':
+        return new ProtoGraph.Card.HTMLCard();
     }
   }
 
@@ -246,6 +248,9 @@ class Body extends Component {
     }
     if (window.site_config_url) {
       options.site_config_url = window.site_config_url
+    }
+    if (card.git_repo_name == "ProtoGraph.Card.toEducationDistrictMap"){
+      options.topo_url = card.files.base_url + "/india-district-topo.json";
     }
     x.init(options);
     this.setState({
