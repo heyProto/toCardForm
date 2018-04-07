@@ -132,6 +132,8 @@ class Update extends Component {
         return new ProtoGraph.Card.toEducationDistrictMap();
       case 'ProtoGraph.Card.HTMLCard':
         return new ProtoGraph.Card.HTMLCard();
+      case 'ProtoGraph.Card.toBio':
+        return new ProtoGraph.Card.toBio();
     }
   }
 
