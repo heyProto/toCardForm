@@ -230,6 +230,21 @@ class Body extends Component {
         return new ProtoGraph.Card.HTMLCard();
       case 'ProtoGraph.Card.toBio':
         return new ProtoGraph.Card.toBio();
+      case 'ProtoGraph.Card.toCEEWHero':
+        return new ProtoGraph.Card.toCEEWHero();
+        break;
+      case 'ProtoGraph.Card.toCEEWHeroFlow1':
+        return new ProtoGraph.Card.toCEEWHeroFlow1();
+        break;
+      case 'ProtoGraph.Card.toCEEWHeroFlow2':
+        return new ProtoGraph.Card.toCEEWHeroFlow2();
+        break;
+      case 'ProtoGraph.Card.toCEEWParameter':
+        return new ProtoGraph.Card.toCEEWParameter();
+        break;
+      case 'ProtoGraph.Card.toCEEWPolicyDrillDown':
+        return new ProtoGraph.Card.toCEEWPolicyDrillDown();
+        break;
     }
   }
 
