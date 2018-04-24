@@ -135,79 +135,54 @@ class Body extends Component {
     switch (instanceString) {
       case 'ProtoGraph.Card.toSocial':
         return new ProtoGraph.Card.toSocial();
-        break;
       case 'ProtoGraph.Card.toExplain':
         return new ProtoGraph.Card.toExplain();
-        break;
       case 'ProtoGraph.Card.toQuiz':
         return new ProtoGraph.Card.toQuiz();
-        break;
       case 'ProtoGraph.Card.toReportViolence':
         return new ProtoGraph.Card.toReportViolence();
-        break;
       case 'ProtoGraph.Card.toLink':
         return new ProtoGraph.Card.toLink();
-        break;
       case 'ProtoGraph.Card.toTimeline':
         return new ProtoGraph.Card.toTimeline();
-        break;
       case 'ProtoGraph.Card.toAudioPhoto':
         return new ProtoGraph.Card.toAudioPhoto();
-        break;
       case 'ProtoGraph.Card.toReportJournalistKilling':
         return new ProtoGraph.Card.toReportJournalistKilling();
-        break;
       case 'ProtoGraph.Card.toDistrictProfile':
         return new ProtoGraph.Card.toDistrictProfile();
-        break;
       case 'ProtoGraph.Card.toRainfall':
         return new ProtoGraph.Card.toRainfall();
-        break;
       case 'ProtoGraph.Card.toWaterExploitation':
         return new ProtoGraph.Card.toWaterExploitation();
-        break;
       case 'ProtoGraph.Card.toLandUse':
         return new ProtoGraph.Card.toLandUse();
-        break;
       case 'ProtoGraph.Card.toWell':
         return new ProtoGraph.Card.toWell();
-        break;
       case 'ProtoGraph.Card.toPoliticalLeadership':
         return new ProtoGraph.Card.toPoliticalLeadership();
-        break;
       case 'ProtoGraph.Card.toMoveToANewCity':
         return new ProtoGraph.Card.toMoveToANewCity();
-        break;
       case 'ProtoGraph.Card.toCluster':
         return new ProtoGraph.Card.toCluster();
-        break;
       case 'ProtoGraph.Card.toQuestion':
         return new ProtoGraph.Card.toQuestion();
-        break;
       case 'ProtoGraph.Card.toCompanyProfile':
         return new ProtoGraph.Card.toCompanyProfile();
-        break;
       case 'ProtoGraph.Card.toStory':
         return new ProtoGraph.Card.toStory();
-        break;
       case 'ProtoGraph.Card.toMedia':
         return new ProtoGraph.Card.toMedia();
-        break;
       case 'ProtoGraph.Card.WaterExploitation':
         return new ProtoGraph.Card.WaterExploitation();
-        break;
       case 'ProtoGraph.Card.toGrid':
         return new ProtoGraph.Card.toGrid();
-        break;
       case 'ProtoGraph.Card.toSurveyScores':
         return new ProtoGraph.Card.toSurveyScores();
-        break;
       case 'ProtoGraph.Card.toStinkCoverVizCard':
         return new ProtoGraph.Card.toStinkCoverVizCard();
-        break;
       case 'ProtoGraph.Card.ComposeCard':
         return new ProtoGraph.Card.ComposeCard();
-        break;
       case 'ProtoGraph.Card.toImage':
         return new ProtoGraph.Card.toImage();
       case 'ProtoGraph.Card.VideoYoutube':
@@ -232,19 +207,16 @@ class Body extends Component {
         return new ProtoGraph.Card.toBio();
       case 'ProtoGraph.Card.toCEEWHero':
         return new ProtoGraph.Card.toCEEWHero();
-        break;
       case 'ProtoGraph.Card.toCEEWHeroFlow1':
         return new ProtoGraph.Card.toCEEWHeroFlow1();
-        break;
       case 'ProtoGraph.Card.toCEEWHeroFlow2':
         return new ProtoGraph.Card.toCEEWHeroFlow2();
-        break;
       case 'ProtoGraph.Card.toCEEWParameter':
         return new ProtoGraph.Card.toCEEWParameter();
-        break;
       case 'ProtoGraph.Card.toCEEWPolicyDrillDown':
         return new ProtoGraph.Card.toCEEWPolicyDrillDown();
-        break;
+      case 'ProtoGraph.Card.toDWChart':
+        return new ProtoGraph.Card.toDWChart();
     }
   }
 
