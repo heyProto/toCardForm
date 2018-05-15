@@ -217,6 +217,8 @@ class Body extends Component {
         return new ProtoGraph.Card.toCEEWPolicyDrillDown();
       case 'ProtoGraph.Card.toDWChart':
         return new ProtoGraph.Card.toDWChart();
+      case 'ProtoGraph.Card.toCreditPartners':
+        return new ProtoGraph.Card.toCreditPartners();
     }
   }
 
