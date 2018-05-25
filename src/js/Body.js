@@ -272,8 +272,8 @@ class Body extends Component {
                 onClick = { this.handleSelectCardClick } >
                 <
                 div className = "card-type-icon"
-                data - tooltip = { `${card.account_slug} / ${card.name}` }
-                data - position = "bottom center" >
+                data-tooltip = { `${card.account_slug} / ${card.name}` }
+                data-position = "bottom center" >
                 <
                 img src = { card.icon_url }
                 /> < /
