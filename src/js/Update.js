@@ -131,6 +131,8 @@ class Update extends Component {
                 return new ProtoGraph.Card.toIndiaSpendCard();
             case 'ProtoGraph.Card.toLCWHero':
                 return new ProtoGraph.Card.toLCWHero();
+            case 'ProtoGraph.Card.toCoverImage':
+                return new ProtoGraph.Card.toCoverImage();        
         }
     }
 
