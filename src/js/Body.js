@@ -228,7 +228,9 @@ class Body extends Component {
             case 'ProtoGraph.Card.toLCWHero':
                 return new ProtoGraph.Card.toLCWHero();
             case 'ProtoGraph.Card.toCoverImage':
-                return new ProtoGraph.Card.toCoverImage();    
+                return new ProtoGraph.Card.toCoverImage();
+            case 'ProtoGraph.Card.toImageNarrative':
+                return new ProtoGraph.Card.toImageNarrative();         
         }
     }
 
