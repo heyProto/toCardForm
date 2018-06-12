@@ -113,7 +113,7 @@ class Body extends Component {
                 "name": postData.name,
                 "template_card_id": this.state.templateCardID,
                 "seo_blockquote": (typeof(this.state.protoGraphInstance.renderSEO) == "function") ? this.state.protoGraphInstance.renderSEO() : "",
-                "optionalConfigJSON": JSON.stringify(postData.optionalConfigJSON)
+                "optionalconfigjson": JSON.stringify(postData.optionalConfigJSON)
             }
         }).then(response => {
             console.log(response, "post response")
@@ -230,7 +230,7 @@ class Body extends Component {
             case 'ProtoGraph.Card.toCoverImage':
                 return new ProtoGraph.Card.toCoverImage();
             case 'ProtoGraph.Card.toImageNarrative':
-                return new ProtoGraph.Card.toImageNarrative();         
+                return new ProtoGraph.Card.toImageNarrative();
         }
     }
 

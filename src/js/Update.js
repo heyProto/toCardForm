@@ -134,7 +134,7 @@ class Update extends Component {
             case 'ProtoGraph.Card.toCoverImage':
                 return new ProtoGraph.Card.toCoverImage();
             case 'ProtoGraph.Card.toImageNarrative':
-                return new ProtoGraph.Card.toImageNarrative();        
+                return new ProtoGraph.Card.toImageNarrative();
         }
     }
 
@@ -211,7 +211,7 @@ class Update extends Component {
                 "name": postData.name,
                 "template_card_id": this.state.templateCardID,
                 "seo_blockquote": (typeof(this.state.updatedInstance.renderSEO) == "function") ? this.state.updatedInstance.renderSEO() : "",
-                "optionalConfigJSON": JSON.stringify(postData.optionalConfigJSON)
+                "optionalconfigjson": JSON.stringify(postData.optionalConfigJSON)
             }
         }).then(response => {
             console.log(response, "put response")
