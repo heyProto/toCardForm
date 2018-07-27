@@ -231,6 +231,10 @@ class Body extends Component {
                 return new ProtoGraph.Card.toCoverImage();
             case 'ProtoGraph.Card.toImageNarrative':
                 return new ProtoGraph.Card.toImageNarrative();
+            case 'ProtoGraph.Card.toFooter':
+                return new ProtoGraph.Card.toFooter();
+            case 'ProtoGraph.Card.toCoverStory':
+                return new ProtoGraph.Card.toCoverStory();
         }
     }
 
