@@ -27,7 +27,7 @@ class Body extends Component {
             }
             // instance.defaults.headers['Access-Token'] = window.accessToken;
             // instance.defaults.headers['Content-Type'] = 'application/json';
-        instance.get(`${window.baseURL}/accounts/${window.accountSlug}/folders/${window.folderSlug}/template_cards/`, configs, {
+        instance.get(`${window.baseURL}/sites/${window.siteSlug}/folders/${window.folderSlug}/template_cards/`, configs, {
             timeout: 5000
         }).then(response => {
             console.log(response, "response")
@@ -50,14 +50,14 @@ class Body extends Component {
             }
             // instance.defaults.headers['Access-Token'] = window.accessToken;
             // instance.defaults.headers['Content-Type'] = 'application/json';
-        instance.get(`${window.baseURL}/accounts/${window.accountSlug}/folders/${window.folderSlug}/template_cards/${card.id}`, configs, {
+        instance.get(`${window.baseURL}/sites/${window.siteSlug}/folders/${window.folderSlug}/template_cards/${card.id}`, configs, {
             timeout: 5000
         }).then(response => {
             console.log(response, "response of card data")
             const cardData = response.data.template_card;
             let newStateVars = {
                 currentCard: cardData,
-                accountID: cardData.account_id,
+                siteID: cardData.site_id,
                 APIName: cardData.git_repo_name,
                 templateDatumID: cardData.template_datum_id,
                 templateCardID: cardData.id
@@ -105,10 +105,10 @@ class Body extends Component {
         // }
         postInstance.defaults.headers['Access-Token'] = window.accessToken;
         postInstance.defaults.headers['Content-Type'] = 'application/json';
-        return postInstance.post(`${window.baseURL}/accounts/${window.accountSlug}/folders/${window.folderSlug}/datacasts`, {
+        return postInstance.post(`${window.baseURL}/sites/${window.siteSlug}/folders/${window.folderSlug}/datacasts`, {
             "datacast": postData.dataJSON,
             "view_cast": {
-                "account_id": this.state.accountID,
+                "site_id": this.state.siteID,
                 "template_datum_id": this.state.templateDatumID,
                 "name": postData.name,
                 "template_card_id": this.state.templateCardID,
@@ -280,7 +280,7 @@ class Body extends Component {
                 onClick = { this.handleSelectCardClick } >
                 <
                 div className = "card-type-icon"
-                data-tooltip = { `${card.account_slug} / ${card.name}` }
+                data-tooltip = { `${card.site_slug} / ${card.name}` }
                 data-position = "bottom center" >
                 <
                 img src = { card.icon_url }

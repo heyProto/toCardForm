@@ -207,10 +207,10 @@ class Update extends Component {
         let postData = this.state.updatedInstance.getData();
         postInstance.defaults.headers['Access-Token'] = window.accessToken;
         postInstance.defaults.headers['Content-Type'] = 'application/json';
-        return postInstance.put(`${window.baseURL}/accounts/${window.accountSlug}/folders/${window.folderSlug}/datacasts/${window.viewCast.id}`, {
+        return postInstance.put(`${window.baseURL}/sites/${window.siteSlug}/folders/${window.folderSlug}/datacasts/${window.viewCast.id}`, {
             "datacast": postData.dataJSON,
             "view_cast": {
-                "account_id": this.state.accountID,
+                "site_id": this.state.siteID,
                 "template_datum_id": this.state.templateDatumID,
                 "name": postData.name,
                 "template_card_id": this.state.templateCardID,
