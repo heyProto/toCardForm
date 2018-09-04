@@ -139,6 +139,8 @@ class Update extends Component {
                 return new ProtoGraph.Card.toFooter();
             case 'ProtoGraph.Card.toCoverStory':
                 return new ProtoGraph.Card.toCoverStory();
+            case 'ProtoGraph.Card.FactCheckerHeader':
+                return new ProtoGraph.Card.HCW();
         }
     }
 
