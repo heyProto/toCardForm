@@ -143,6 +143,8 @@ class Update extends Component {
                 return new ProtoGraph.Card.HCW();
             case 'ProtoGraph.Card.toHeader':
                 return new ProtoGraph.Card.toCard();
+            case 'ProtoGraph.Card.toDteCourtCase':
+                return new ProtoGraph.Card.toDteCourtCase();
         }
     }
 
