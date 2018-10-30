@@ -145,6 +145,8 @@ class Update extends Component {
                 return new ProtoGraph.Card.toCard();
             case 'ProtoGraph.Card.toDteCourtCase':
                 return new ProtoGraph.Card.toDteCourtCase();
+            case 'ProtoGraph.Card.toRecordMeToo':
+                return new ProtoGraph.Card.toRecordMeToo();
         }
     }
 
