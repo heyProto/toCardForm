@@ -243,6 +243,8 @@ class Body extends Component {
                 return new ProtoGraph.Card.toDteCourtCase();
             case 'ProtoGraph.Card.toRecordMeToo':
                 return new ProtoGraph.Card.toRecordMeToo();
+            case 'ProtoGraph.Card.ToOxfamCTA':
+                return new ProtoGraph.Card.ToOxfamCTA();
         }
     }
 
