@@ -177,8 +177,8 @@ class Update extends Component {
             options.topo_url = card.files.base_url + "/india-district-topo.json";
         }
         if (["ProtoGraph.Card.toCEEWHeroFlow1", "ProtoGraph.Card.toCEEWHeroFlow2", "ProtoGraph.Card.toCEEWHero"].indexOf(card.git_repo_name) >= 0) {
-            options.districts = "https://cdn.protograph.pykih.com/Assets/districts.json"
-            options.states = "https://cdn.protograph.pykih.com/Assets/states.json"
+            options.districts = "https://utils.pro.to/Assets/districts.json"
+            options.states = "https://utils.pro.to/Assets/states.json"
         }
         update_x.init(options);
         this.setState({
